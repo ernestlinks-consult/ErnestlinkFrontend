@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,170 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+:root {
+  --backgroundd: #ffffff;
+  --foregroundd: #171717;
+}
+/* ::before, ::after { margin: 0px; padding: 0px; box-sizing: border-box; } */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.container,
+.container-fluid {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+body {
+  color: var(--foregroundd);
+  background-color: white;
+}
+
+.mainContainer {
+  /* background: url("./Images/ProjectELC1024\ Hero\ Bg.png") no-repeat center; */
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 0;
+}
+
+/* First code */
+.section-one {
+  /* background: url("./Images/hero_img.png") no-repeat center center; */
+  background-size: cover;
+}
+.imageandtext {
+  display: flex;
+  align-items: center;
+  flex-direction: row; /* Default: Side by Side */
+}
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.intro-top {
+  font-size: 60px;
+  line-height: 68px;
+}
+.intro-p {
+  font-size: 20px;
+  line-height: 26.04px;
+}
+.text-intro {
+  font-size: 20px;
+  line-height: 26.04px;
+  letter-spacing: 10px;
+}
+.anchor a,
+.link {
+  background-color: rgba(5, 5, 130, 1);
+}
+.nav-link {
+  font-size: 18px;
+}
+.fag-title {
+  color: rgba(5, 5, 130, 1);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+}
+
+.active {
+  color: var(--bs-nav-link-hover-color);
+}
+.hero_container {
+  max-height: 840px;
+  overflow: hidden;
+}
+.hero_img {
+  margin-top: 350px;
+  height: 810px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .imageandtext {
+    flex-direction: column-reverse; /* Small Screens: Image Below */
+  }
+  .mainContainer {
+    padding-top: 150px; /* Adjust as needed */
+    overflow: auto;
+  }
+
+  html,
+  body {
+    height: auto;
+    min-height: 100vh;
+    /* overflow: auto; */
+  }
+  .intro-top {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .text-intro {
+    font-size: 10px;
+    line-height: 0;
+    letter-spacing: 8px;
+    font-weight: 600;
+  }
+  .intro-p {
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 500;
+    width: 380px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navContainer {
+    background-color: whitesmoke;
+  }
+  .mainContainer {
+    padding-top: 150px;
+  }
+}
+
+@media (min-width: 768px) {
+  .landing {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 868px) {
+  .hero_container {
+    max-height: 625px;
+  }
+  .hero_img {
+    margin-top: 10px;
+    max-height: 625px;
+  }
+  .mainContainer {
+    padding-top: 150px;
+    margin: 0 10px 0 10px;
+  }
 }

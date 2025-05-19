@@ -1,0 +1,34 @@
+@media (max-width: 1024px) {
+  .sideimage {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    height: 30vh;
+    src: url("/tablet1.svg");
+  }
+  .main-container {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: none;
+    align-self: center;
+  }
+  .create-account {
+    padding: 4px 32px;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    height: 50vh;
+    justify-self: center;
+
+    .head {
+      text-align: center;
+
+      h1 {
+        font-weight: 700;
+      }
+      p {
+        font-weight: 600;
+      }
+    }
+    .buttons button {
+      padding: 4px 12px;
+    }
+  }
+}
