@@ -236,7 +236,16 @@ export default function DashboardLayout({
             }}>
             Admin Dashboard
           </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
+              mr: {
+                xs: 0,
+                md: 4,
+              },
+            }}>
             <Avatar
               sx={{
                 bgcolor: "#0505AA",
