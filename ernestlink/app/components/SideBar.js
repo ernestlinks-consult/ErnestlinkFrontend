@@ -18,8 +18,8 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import BadgeIcon from "@mui/icons-material/Badge";
 import MenuIcon from "@mui/icons-material/Menu";
+import BadgeIcon from "@mui/icons-material/Badge";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -27,7 +27,12 @@ import Image from "next/image";
 
 const drawerWidth = 318;
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({
+  children,
+  menuItems,
+  selectedMenu,
+  setSelectedMenu,
+}) {
   const userName = "Admin User";
   const userRole = "Admin";
 
@@ -44,66 +49,128 @@ export default function DashboardLayout({ children }) {
     <Box
       sx={{
         height: "100vh",
-        width: drawerWidth,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
       }}>
       <Box>
-        <Toolbar sx={{ justifyContent: "center", px: 2 }}>
-          <Image
-            src="/images/elc_logo.png"
-            alt="Logo"
-            width={150}
-            height={50}
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
+        <Toolbar
+          sx={{
+            justifyContent: "center",
+            px: 2,
+            py: 3,
+          }}>
+          <Box
+            sx={{
+              bgcolor: "#F8FAFC",
+              p: 1.5,
+              borderRadius: 2,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              ml: -12,
+            }}>
+            <Image
+              src="/images/elc_logo.png"
+              alt="Logo"
+              width={130}
+              height={40}
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                objectFit: "contain",
+              }}
+            />
+          </Box>
         </Toolbar>
         <List>
-          {[
-            { text: "Dashboard", icon: <DashboardIcon /> },
-            { text: "Users", icon: <PeopleIcon /> },
-            { text: "Passports", icon: <BadgeIcon /> },
-          ].map(({ text, icon }) => (
-            // <ListItem button key={text}>
-            //   <ListItemIcon sx={{ color: "#0505AA" }}>{icon}</ListItemIcon>
-            //   <ListItemText primary={text} />
-            // </ListItem>
-            <ListItem
-              button
-              key={text}
-              sx={{
-                bgcolor: "#F8FAFC", // default light bg
-                color: "#0505AA", // default dark text
-                "&:hover": {
-                  bgcolor: "#0505AA", // hover dark bg
-                  color: "#F8FAFC", // hover light text
+          {menuItems.map(({ key, text, icon }) => {
+            const isSelected = selectedMenu === key;
+
+            return (
+              <ListItem
+                button
+                key={key}
+                selected={isSelected}
+                onClick={() => {
+                  setSelectedMenu(key);
+                  if (isMobile) setMobileOpen(false); // close drawer on mobile
+                }}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1.5,
+                  px: 5,
+                  py: 2,
+                  position: "relative",
+                  transition: "all 0.3s ease-in-out",
                   cursor: "pointer",
+                  bgcolor: isSelected ? "#0505AA" : "#F8FAFC",
+                  color: isSelected ? "#F8FAFC" : "#0505AA",
+
                   "& .MuiListItemIcon-root": {
-                    color: "#F8FAFC", // icon changes color too
+                    color: isSelected ? "#F8FAFC" : "#0505AA",
                   },
-                },
-              }}>
-              <ListItemIcon sx={{ color: "#0505AA" }}>{icon}</ListItemIcon>
-              <ListItemText
-                primary={text}
-                primaryTypographyProps={{ fontSize: "20px" }}
-              />
-            </ListItem>
-          ))}
+
+                  "&:hover": {
+                    bgcolor: "#0505AA",
+                    color: "#F8FAFC",
+                    borderTop: "1px solid #F8F8FF",
+                    borderBottom: "1px solid #F8F8FF",
+                    "& .MuiListItemIcon-root": {
+                      color: "#F8FAFC",
+                    },
+                  },
+
+                  "&.Mui-selected": {
+                    bgcolor: "#0505AA",
+                    color: "#F8FAFC",
+                    "& .MuiListItemIcon-root": {
+                      color: "#F8FAFC",
+                    },
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      left: 0,
+                      top: 0,
+                      height: "100%",
+                      width: "5px",
+                      bgcolor: "#F8FAFC",
+                      borderRadius: "0 4px 4px 0",
+                    },
+                  },
+                }}>
+                <ListItemIcon sx={{ minWidth: 32 }}>{icon}</ListItemIcon>
+                <ListItemText
+                  primary={text}
+                  primaryTypographyProps={{
+                    fontSize: "20px",
+                    fontWeight: 600,
+                  }}
+                />
+              </ListItem>
+            );
+          })}
         </List>
       </Box>
-      <Divider />
-      <Box>
+      <Box sx={{ borderTop: "1px solid #0505AA" }}>
         <Button
           startIcon={<LogoutIcon />}
           fullWidth
           sx={{
-            bgcolor: "#F8FAFC", // light background default
-            color: "#0505AA", // dark text default
+            bgcolor: "#F8FAFC",
+            color: "#0505AA",
+            textTransform: "none",
+            borderRadius: 0,
+            fontSize: "24px",
+            fontWeight: 600,
+            py: 1,
             "&:hover": {
-              bgcolor: "#0505AA", // dark background on hover
-              color: "#F8FAFC", // light text on hover
+              bgcolor: "#0505AA",
+              color: "#F8FAFC",
+              "& .MuiButton-startIcon": {
+                color: "#F8FAFC",
+              },
             },
           }}
           onClick={() => {
@@ -118,38 +185,103 @@ export default function DashboardLayout({ children }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-
       {/* AppBar with hamburger icon only on mobile */}
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
+          backgroundColor: "#FFFFFF",
+          color: "#03038D",
           width: isMobile ? "100%" : `calc(100% - ${drawerWidth}px)`,
           ml: isMobile ? 0 : `${drawerWidth}px`,
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
+          borderBottom: "1px solid #E5E7EB",
         }}>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Toolbar
+          sx={{
+            minHeight: {
+              xs: 56,
+              sm: 64,
+              md: 100,
+            },
+            justifyContent: "space-between",
+            px: 3,
+          }}>
           {isMobile && (
             <IconButton
               color="inherit"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2 }}
+              sx={{ mr: 1 }}
               aria-label="open drawer">
               <MenuIcon />
             </IconButton>
           )}
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              fontWeight: 700,
+              color: "#03038D",
+              fontSize: {
+                xs: "16px",
+                sm: "20px",
+                md: "34px",
+              },
+              // ml: {
+              //   xs: -4,
+              //   sm: -2.5,
+              //   md: 0,
+              // },
+            }}>
             Admin Dashboard
           </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Avatar>{userName.charAt(0)}</Avatar>
-            <Box>
-              <Typography variant="subtitle1" sx={{ lineHeight: 1 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+            <Avatar
+              sx={{
+                bgcolor: "#0505AA",
+                width: {
+                  xs: 40,
+                  sm: 50,
+                  md: 59,
+                },
+                height: {
+                  xs: 40,
+                  sm: 50,
+                  md: 59,
+                },
+              }}>
+              {userName.charAt(0)}
+            </Avatar>
+            <Box
+              sx={{
+                lineHeight: 0.5,
+                display: {
+                  xs: "none",
+                  md: "block",
+                },
+              }}>
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontWeight: 700,
+                  fontSize: {
+                    md: "14px",
+                  },
+                  color: "#0505AA",
+                }}>
                 {userName}
               </Typography>
               <Typography
                 variant="caption"
-                color="text.secondary"
-                sx={{ lineHeight: 1 }}>
+                sx={{
+                  fontWeight: 400,
+                  fontSize: {
+                    md: "14px",
+                  },
+                  color: "#0505AA",
+                  lineHeight: 1,
+                }}>
                 {userRole}
               </Typography>
             </Box>
@@ -207,7 +339,7 @@ export default function DashboardLayout({ children }) {
         sx={{
           flexGrow: 1,
           p: 3,
-          mt: "64px",
+          mt: "80px",
           width: { xs: "100%", sm: `calc(100% - ${drawerWidth}px)` },
         }}>
         {children || <Typography>Welcome to the Admin Dashboard!</Typography>}
