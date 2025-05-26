@@ -12,12 +12,14 @@ import GroupIcon from "@mui/icons-material/Group";
 function AdminDashboard() {
   return (
     <Box
-      sx={{
-        p: { xs: 2, sm: 2, md: 3, lg: 4 },
-        bgcolor: "#F8FAFC",
-        minHeight: "1000vh",
-        overflowY: { xs: "auto", sm: "auto", md: "auto", lg: "visible" },
-      }}>
+      // sx={{
+      //   p: { xs: 2, sm: 2, md: 3, lg: 4 },
+      //   bgcolor: "#F8FAFC",
+      //   minHeight: "1000vh",
+      //   overflowY: { xs: "auto", sm: "auto", md: "auto", lg: "visible" },
+      // }}
+      maxWidth="xl"
+      sx={{ py: 4, width: "100%", overflow: "auto", height: "80vh", pb: 5 }}>
       <Grid
         container
         spacing={2}
