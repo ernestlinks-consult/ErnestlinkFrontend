@@ -3,7 +3,7 @@ import { Box, Grid, Paper, Typography, Button } from "@mui/material";
 import ContactPageOutlinedIcon from "@mui/icons-material/ContactPageOutlined";
 import GroupIcon from "@mui/icons-material/Group";
 
-function AdminDashboard() {
+export default function AdminDashboard({ title }) {
   return (
     <Box
       sx={{
@@ -12,6 +12,7 @@ function AdminDashboard() {
         minHeight: "1000vh",
         overflowY: { xs: "auto", sm: "auto", md: "auto", lg: "visible" },
       }}>
+      <Typography variant="h4">{title}</Typography>
       <Grid
         container
         spacing={2}
@@ -188,179 +189,7 @@ function AdminDashboard() {
           </Box>
           <Box sx={{ minHeight: "150px", p: 2, color: "#777" }}>
             {/* Placeholder for actual rows */}
-            No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.No recent passport applications found.No recent passport
-            applications found.No recent passport applications found.No recent
-            passport applications found.No recent passport applications found.No
-            recent passport applications found.No recent passport applications
-            found.
+            No recent passport applications found.
           </Box>
         </Box>
       </Box>

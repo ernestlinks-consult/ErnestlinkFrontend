@@ -30,6 +30,7 @@ const drawerWidth = 318;
 export default function DashboardLayout({
   children,
   menuItems,
+  pageTitle,
   selectedMenu,
   setSelectedMenu,
 }) {
@@ -228,13 +229,9 @@ export default function DashboardLayout({
                 sm: "20px",
                 md: "34px",
               },
-              // ml: {
-              //   xs: -4,
-              //   sm: -2.5,
-              //   md: 0,
-              // },
             }}>
-            Admin Dashboard
+            {/* Admin Dashboard */}
+            {pageTitle}
           </Typography>
           <Box
             sx={{
