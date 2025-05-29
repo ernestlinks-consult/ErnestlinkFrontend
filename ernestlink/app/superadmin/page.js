@@ -53,12 +53,14 @@ export default function Home() {
   const pageTitle = selectedMenuItem?.title ?? selectedMenuItem?.text;
 
   return (
-    <DashboardLayout
-      menuItems={adminMenu}
-      selectedMenu={selectedMenu}
-      setSelectedMenu={setSelectedMenu}
-      pageTitle={pageTitle}>
-      {currentComponent}
-    </DashboardLayout>
+    <Box sx={{ bgcolor: "#F8FAFC" }}>
+      <DashboardLayout
+        menuItems={adminMenu}
+        selectedMenu={selectedMenu}
+        setSelectedMenu={setSelectedMenu}
+        pageTitle={pageTitle}>
+        {currentComponent}
+      </DashboardLayout>
+    </Box>
   );
 }

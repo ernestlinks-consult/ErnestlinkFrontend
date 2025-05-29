@@ -186,7 +186,6 @@ export default function DashboardLayout({
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      {/* AppBar with hamburger icon only on mobile */}
       <AppBar
         position="fixed"
         elevation={0}
@@ -230,7 +229,6 @@ export default function DashboardLayout({
                 md: "34px",
               },
             }}>
-            {/* Admin Dashboard */}
             {pageTitle}
           </Typography>
           <Box
@@ -348,7 +346,7 @@ export default function DashboardLayout({
           mt: "80px",
           width: { xs: "100%", sm: `calc(100% - ${drawerWidth}px)` },
         }}>
-        {children || <Typography>Welcome to the Admin Dashboard!</Typography>}
+        {children}
       </Box>
     </Box>
   );

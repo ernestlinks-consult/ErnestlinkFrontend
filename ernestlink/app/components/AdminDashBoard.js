@@ -7,10 +7,11 @@ export default function AdminDashboard({ title }) {
   return (
     <Box
       sx={{
-        p: { xs: 2, sm: 2, md: 3, lg: 4 },
-        bgcolor: "#F8FAFC",
-        minHeight: "1000vh",
-        overflowY: { xs: "auto", sm: "auto", md: "auto", lg: "visible" },
+        py: 1,
+        width: "100%",
+        overflow: "auto",
+        height: "80vh",
+        pb: 5,
       }}>
       <Typography variant="h4">{title}</Typography>
       <Grid
@@ -133,7 +134,7 @@ export default function AdminDashboard({ title }) {
       <Box
         sx={{
           flex: 1,
-          minHeight: { xs: "300px", sm: "100vh" },
+          minHeight: { xs: "30px", sm: "10vh" },
           mt: 5,
           p: 3,
           border: "2px solid #007BFF30",

@@ -14,7 +14,7 @@ export default function FacilatorDashboard() {
   return (
     <Container
       maxWidth="xl"
-      sx={{ py: 4, width: "100%", overflow: "auto", height: "80vh", pb: 5 }}>
+      sx={{ py: 1, width: "100%", overflow: "auto", height: "80vh", pb: 5 }}>
       <Box sx={{ mb: 4, overflow: "auto" }}>
         <Typography
           variant="h4"
