@@ -9,14 +9,15 @@ import ContactPageOutlinedIcon from "@mui/icons-material/ContactPageOutlined";
 import GroupIcon from "@mui/icons-material/Group";
 import AdminDashboard from "../components/AdminDashBoard";
 import Facilitators from "../components/Facilitators";
+import Passports from "../components/Passports";
 
 // function Facilitators() {
 //   return <div>Manage Facilitators</div>;
 // }
 
-function Passports() {
-  return <div>View Passports</div>;
-}
+// function Passports() {
+//   return <div>View Passports</div>;
+// }
 
 // Menu config
 const adminMenu = [
