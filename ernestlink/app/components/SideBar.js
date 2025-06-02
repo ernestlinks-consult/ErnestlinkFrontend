@@ -30,6 +30,7 @@ const drawerWidth = 318;
 export default function DashboardLayout({
   children,
   menuItems,
+  pageTitle,
   selectedMenu,
   setSelectedMenu,
 }) {
@@ -185,7 +186,6 @@ export default function DashboardLayout({
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      {/* AppBar with hamburger icon only on mobile */}
       <AppBar
         position="fixed"
         elevation={0}
@@ -228,13 +228,8 @@ export default function DashboardLayout({
                 sm: "20px",
                 md: "34px",
               },
-              // ml: {
-              //   xs: -4,
-              //   sm: -2.5,
-              //   md: 0,
-              // },
             }}>
-            Admin Dashboard
+            {pageTitle}
           </Typography>
           <Box
             sx={{
@@ -351,7 +346,7 @@ export default function DashboardLayout({
           mt: "80px",
           width: { xs: "100%", sm: `calc(100% - ${drawerWidth}px)` },
         }}>
-        {children || <Typography>Welcome to the Admin Dashboard!</Typography>}
+        {children}
       </Box>
     </Box>
   );

@@ -1,4 +1,4 @@
-import { FileText, CheckCircle, Clock, AlertCircle } from "lucide-react"
+import { FileText, CheckCircle, Clock, AlertCircle } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -7,6 +7,7 @@ import {
   Box,
   Container,
   Grid,
+
   Chip
 } from "@mui/material"
 
@@ -32,6 +33,7 @@ export default function FacilatorDashboard() {
       md: "repeat(3, 1fr)", 
       lg: "repeat(4, 1fr)" }, 
      }}>
+
         <Grid item xs={12} md={6}>
           <Card
             sx={{
@@ -40,6 +42,7 @@ export default function FacilatorDashboard() {
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
             }}
           >
+
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -53,6 +56,7 @@ export default function FacilatorDashboard() {
                   justifyContent: "space-between"
                 }}
               >
+
                 <FileText size={24} color="#1e40af" />
               </Box>
               <Box>
@@ -60,12 +64,14 @@ export default function FacilatorDashboard() {
                   variant="body2"
                   sx={{ color: "#6b7280", fontSize: "0.875rem" }}
                 >
+
                   Total Applications
                 </Typography>
                 <Typography
                   variant="h3"
                   sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
                 >
+
                   3
                 </Typography>
               </Box>
@@ -81,6 +87,7 @@ export default function FacilatorDashboard() {
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
             }}
           >
+
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -100,12 +107,14 @@ export default function FacilatorDashboard() {
                   variant="body2"
                   sx={{ color: "#6b7280", fontSize: "0.875rem" }}
                 >
+
                   Approved
                 </Typography>
                 <Typography
                   variant="h3"
                   sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
                 >
+
                   2
                 </Typography>
               </Box>
@@ -133,6 +142,7 @@ export default function FacilatorDashboard() {
                   justifyContent: "center"
                 }}
               >
+
                 <Clock size={24} color="#f59e0b" />
               </Box>
               <Box>
@@ -140,12 +150,14 @@ export default function FacilatorDashboard() {
                   variant="body2"
                   sx={{ color: "#6b7280", fontSize: "0.875rem" }}
                 >
+
                   Pending
                 </Typography>
                 <Typography
                   variant="h3"
                   sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
                 >
+
                   1
                 </Typography>
               </Box>
@@ -161,6 +173,7 @@ export default function FacilatorDashboard() {
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
             }}
           >
+
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -173,11 +186,13 @@ export default function FacilatorDashboard() {
                   justifyContent: "center"
                 }}
               >
+
                 <AlertCircle size={24} color="#ef4444" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
+
                   sx={{ color: "#6b7280", fontSize: "0.875rem" }}
                 >
                   Rejected
@@ -186,6 +201,7 @@ export default function FacilatorDashboard() {
                   variant="h3"
                   sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
                 >
+
                   0
                 </Typography>
               </Box>
@@ -198,7 +214,6 @@ export default function FacilatorDashboard() {
       <Typography
         variant="h5"
         sx={{ fontWeight: "bold", color: "#1f2937", mb: 2 }}
-      >
         Quick Actions
       </Typography>
       <Grid container spacing={3} sx={{ mb: 4 }}>
@@ -218,6 +233,7 @@ export default function FacilatorDashboard() {
                 textAlign: "center"
               }}
             >
+
               <Box
                 sx={{
                   backgroundColor: "#dbeafe",
@@ -226,6 +242,7 @@ export default function FacilatorDashboard() {
                   mb: 2,
                   display: "flex",
                   alignItems: "center",
+
                   justifyContent: "center"
                 }}
               >
@@ -244,6 +261,7 @@ export default function FacilatorDashboard() {
                   "&:hover": { backgroundColor: "#1e40af" }
                 }}
               >
+
                 Register Passport
               </Button>
             </CardContent>
@@ -257,6 +275,7 @@ export default function FacilatorDashboard() {
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
             }}
           >
+
             <CardContent
               sx={{
                 p: 4,
@@ -274,9 +293,11 @@ export default function FacilatorDashboard() {
                   mb: 2,
                   display: "flex",
                   alignItems: "center",
+
                   justifyContent: "center"
                 }}
               >
+
                 <Clock size={24} color="#1e40af" />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
@@ -292,10 +313,12 @@ export default function FacilatorDashboard() {
                   color: "#374151",
                   "&:hover": {
                     borderColor: "#9ca3af",
+
                     backgroundColor: "rgba(0, 0, 0, 0.04)"
                   }
                 }}
               >
+
                 View Applications
               </Button>
             </CardContent>
@@ -309,9 +332,11 @@ export default function FacilatorDashboard() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+
           mb: 2
         }}
       >
+
         <Typography variant="h5" sx={{ fontWeight: "bold", color: "#1f2937" }}>
           Recent Applications
         </Typography>
@@ -322,10 +347,12 @@ export default function FacilatorDashboard() {
             textTransform: "none",
             "&:hover": {
               backgroundColor: "transparent",
+
               textDecoration: "underline"
             }
           }}
         >
+
           View All
         </Button>
       </Box>
@@ -351,40 +378,43 @@ export default function FacilatorDashboard() {
         />
       </Box>
     </Container>
-  )
+
+  );
 }
 
 function ApplicationCard({ name, id, date, status }) {
-  const getStatusConfig = status => {
+  const getStatusConfig = (status) => {
     switch (status) {
       case "approved":
         return {
           backgroundColor: "#dcfce7",
           color: "#15803d",
-          icon: <CheckCircle size={16} />
-        }
+          icon: <CheckCircle size={16} />,
+        };
       case "pending":
         return {
           backgroundColor: "#fef3c7",
           color: "#a16207",
-          icon: <Clock size={16} />
-        }
+          icon: <Clock size={16} />,
+        };
+
       case "rejected":
         return {
           backgroundColor: "#fee2e2",
           color: "#dc2626",
-          icon: <AlertCircle size={16} />
-        }
+          icon: <AlertCircle size={16} />,
+        };
       default:
         return {
           backgroundColor: "#f3f4f6",
           color: "#374151",
-          icon: null
-        }
+          icon: null,
+        };
     }
-  }
+  };
 
-  const statusConfig = getStatusConfig(status)
+  const statusConfig = getStatusConfig(status);
+
 
   return (
     <Card
@@ -409,12 +439,14 @@ function ApplicationCard({ name, id, date, status }) {
             variant="body2"
             sx={{ color: "#6b7280", fontSize: "0.875rem" }}
           >
+
             ID: {id}
           </Typography>
           <Typography
             variant="body2"
             sx={{ color: "#6b7280", fontSize: "0.875rem" }}
           >
+
             Submitted on {date}
           </Typography>
         </Box>
@@ -429,9 +461,11 @@ function ApplicationCard({ name, id, date, status }) {
             "& .MuiChip-icon": {
               color: statusConfig.color
             }
+
           }}
         />
       </CardContent>
     </Card>
-  )
+
+  );
 }
