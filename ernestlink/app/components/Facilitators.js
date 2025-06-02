@@ -54,11 +54,6 @@ export default function Facilitators() {
 
   const [editFacilitator, setEditFacilitator] = useState(null);
 
-  const handleEditClick = (facilitator) => {
-    setEditFacilitator(facilitator);
-    setOpen(true);
-  };
-
   const handleEditFacilitator = (updatedFacilitator) => {
     setFacilitators((prev) =>
       prev.map((f) =>
@@ -161,7 +156,7 @@ export default function Facilitators() {
                 <Box width="30%">{f.email}</Box>
                 <Box width="20%">{f.dateAdded}</Box>
                 <Box width="20%" textAlign="center">
-                  <Tooltip title="Edit">
+                  {/* <Tooltip title="Edit">
                     <IconButton
                       onClick={() => handleEditClick(f)}
                       sx={{
@@ -173,7 +168,7 @@ export default function Facilitators() {
                       size="small">
                       <Edit fontSize="small" />
                     </IconButton>
-                  </Tooltip>
+                  </Tooltip> */}
                   <Tooltip title="Delete">
                     <IconButton
                       onClick={() => handleDeleteFacilitator(f.id)}
