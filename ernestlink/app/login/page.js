@@ -1,11 +1,22 @@
+"use client";
 import Link from "next/link";
 import "@/app/css/index.css";
 import "@/app/css/mediaQueries.css";
-import Create_artifact from "../components/Create_artifact";
+import Create_artifact from "@/app/components/Create_artifact";
+import {Envelope,Lock,Eye} from 'react-bootstrap-icons';
+import {useState} from "react";
 // import { MdOutlineEmail } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
+
 
 export default function Login() {
+  const [mail,setMail]=useState('');
+  const [password,setPassword]=useState('');
+  const [visible,setVisible]=useState(false);
+
+  function handleVisiblePassword() {
+
+  }
+
   return (
     <div className="main-container">
       <div className="create-account">
@@ -17,34 +28,36 @@ export default function Login() {
             }
           </p>
         </div>
-        <div className="inputs">
-          <input type="text" placeholder="First Name" hidden />
-          <input type="text" placeholder="Last Name" hidden />
-          <input type="date" placeholder="mm/dd/yyyy" hidden />
-          <input type="email" placeholder={<MdOutlineEmail /> + "Email"} />
-          <input type="password" placeholder="Password" hidden />
-          <input type="password" placeholder="Confirm Password" hidden />
-        </div>
-        <div className="buttons">
-          <button className="one">Verify with Phone</button>
-          <button className="two">Verify with Email</button>
-          {/* <div className="text resend">
-          <p>Resend passcode</p>
-        </div> */}
-        </div>
+        <form method="post" onSubmit={(e) => {
+          e.preventDefault();
+          const x={mail,password};
+          console.log(x);
+          setMail('');
+          setPassword('');
+        }}>
 
-        <div className="signup-button">
-          <button type="submit" className="submit">
-            Signup
-          </button>
-        </div>
-        <div className="text">
-          <p>
-            Already have an account? <Link href="/">Click here!</Link>
-          </p>
-        </div>
+          <div className="inputs">
+            <div className="input-group">
+              {!mail&&<Envelope fontSize={32} fontWeight={500} color="#878484" />}
+              <input type="email" placeholder="E-mail" value={mail} onChange={(e) => setMail(e.target.value)} />
+            </div>
+            <div className="input-group">
+              {!password&&<Lock fontSize={32} fontWeight={500} color="#878484" />}
+              {password&&<Eye fontSize={32} fontWeight={500} color="#878484" onClick={() => setVisible(!visible)} />}
+              <input type={visible} value={password} placeholder="Password" onChange={e => setPassword(e.target.value)} />
+            </div>
+          </div>
+
+
+          <div className="signup-button">
+            <button type="submit" className="submit">
+              Login
+            </button>
+          </div>
+
+        </form>
       </div>
-      <Create_artifact />
+      <Create_artifact page="login" />
     </div>
   );
 }

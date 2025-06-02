@@ -1,178 +1,199 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Emblema+One&display=swap");
 :root {
-  --primary-main-700: #050582;
-  --primary-main-900: #0505aa;
-  --primary-main-500: #0505c6;
-  --neutral-800: #373740;
-  --grey-color: #878484;
-  --neutral: #595959;
-  --white: #fff;
+	--primary-main-700: #050582;
+	--primary-main-900: #0505aa;
+	--primary-main-500: #0505c6;
+	--neutral-800: #373740;
+	--grey-color: #878484;
+	--neutral: #595959;
+	--white: #fff;
 }
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 body {
-  font-family: "DM Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: none;
-  overflow: hidden;
+	font-family: "DM Sans", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: none;
+	overflow: hidden;
 }
 .sideimage {
-  height: 100%;
-  width: 100%;
-  background-image: url("/images/create_artifact1.png");
-  background-size: cover;
+	height: 100%;
+	width: 100%;
+	background-image: url("/images/create_artifact1.png");
+	background-size: cover;
+	background-repeat: none;
+}
+.login {
+	background-image: url("/images/login.png");
+	background-repeat: none;
+	background-size: cover;
 }
 .main-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100vh;
-  /* align-items: center; */
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	height: 100vh;
+	/* align-items: center; */
 }
 a:visited,
 a:link {
-  text-decoration: none;
-  color: var(--primary-main-500);
+	text-decoration: none;
+	color: var(--primary-main-500);
 }
 .buttons {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  gap: 22px;
-  margin-bottom: 48px;
+	display: flex;
+	justify-content: center;
+	/* align-items: center; */
+	gap: 22px;
+	margin-bottom: 48px;
 
-  .one,
-  .two {
-    border-radius: 8px;
-    border: 2px solid var(--primary-main-500);
-    padding: 16px;
-    outline: none;
-    font-weight: 700;
-  }
-  .one {
-    color: var(--primary-main-500);
-    background-color: var(--white);
-  }
-  .two {
-    color: var(--white);
-    background-color: var(--primary-main-500);
-  }
+	.one,
+	.two {
+		border-radius: 8px;
+		border: 2px solid var(--primary-main-500);
+		padding: 16px;
+		outline: none;
+		font-weight: 700;
+	}
+	.one {
+		color: var(--primary-main-500);
+		background-color: var(--white);
+	}
+	.two {
+		color: var(--white);
+		background-color: var(--primary-main-500);
+	}
 }
 .one,
 .two,
 .submit:hover {
-  cursor: pointer;
-  background-color: var(--primary-main-500);
+	cursor: pointer;
+	background-color: var(--primary-main-500);
 }
 .signup-button {
-  button {
-    width: 100%;
-    height: 48px;
-    border-radius: 4px;
-    color: var(--white);
-    background-color: var(--primary-main-700);
-    outline: nonec;
-  }
-  margin-bottom: 52px;
+	button {
+		width: 100%;
+		height: 48px;
+		border-radius: 4px;
+		color: var(--white);
+		background-color: var(--primary-main-700);
+		outline: none;
+		border: none;
+	}
+	margin-bottom: 52px;
+}
+input {
+	border: none;
+	outline: none;
+}
+.input-group {
+	width: 100%;
+	color: var(--neutral);
+	outline: none;
+	font-size: 18px;
+	border-radius: 8px;
+	padding: 8px;
+	border: 1.5px solid var(--neutral-800);
+	display: flex;
 }
 /* ------- CREATE ACCOUNTELEMENTS------------ */
 .create-account {
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  padding: 4px 82px;
-  width: 100%;
-  /* justify-items: space-between; */
-  .head {
-    h1 {
-      color: var(--primary-main-900);
-      margin-bottom: 12px;
-    }
-    margin-bottom: 48px;
-  }
-  p {
-    color: var(--grey-color);
-  }
+	display: flex;
+	align-self: center;
+	flex-direction: column;
+	padding: 4px 82px;
+	width: 100%;
+	/* justify-items: space-between; */
+	.head {
+		h1 {
+			color: var(--primary-main-900);
+			margin-bottom: 12px;
+		}
+		margin-bottom: 48px;
+	}
+	p {
+		color: var(--grey-color);
+	}
 
-  .inputs {
-    margin-bottom: 52px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  input {
-    width: 100%;
-    color: var(--neutral);
-    outline: none;
-    font-size: 18px;
-    border: 1.5px solid var(--neutral-800);
-    border-radius: 8px;
-    padding: 8px;
-  }
-  input::placeholder {
-    color: var(--grey-color);
-    font-weight: 500;
-    /* padding: 8px; */
-    /* font-size: 18px; */
-  }
+	.inputs {
+		margin-bottom: 52px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+	input {
+		width: 100%;
+		color: var(--neutral);
+		outline: none;
+		font-size: 18px;
+		border-radius: 8px;
+		padding: 8px;
+		/* border: 1.5px solid var(--neutral-800); */
+	}
+	input::placeholder {
+		color: var(--grey-color);
+		font-weight: 500;
+		/* padding: 8px; */
+		/* font-size: 18px; */
+	}
 
-  .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 32px;
-  }
+	.text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 32px;
+	}
 }
 /* ==============Signup OTP=========== */
 .signupotpConttainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-self: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-self: center;
 
-  h1 {
-    text-align: center;
-    color: var(--primary-main-900);
-  }
+	h1 {
+		text-align: center;
+		color: var(--primary-main-900);
+	}
 
-  .bubble-img {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 28px;
-  }
-  .text {
-    margin-bottom: 62px;
-    font-size: 14px;
-  }
-  .resend {
-    margin-bottom: 0;
-    align-self: center;
-  }
-  .otp-numbers {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-self: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 32px;
+	.bubble-img {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 28px;
+	}
+	.text {
+		margin-bottom: 62px;
+		font-size: 14px;
+	}
+	.resend {
+		margin-bottom: 0;
+		align-self: center;
+	}
+	.otp-numbers {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		align-self: center;
+		justify-content: center;
+		gap: 16px;
+		margin-bottom: 32px;
 
-    .otpNum {
-      text-align: center;
-      /* width: 42px;
+		.otpNum {
+			text-align: center;
+			/* width: 42px;
       height: 48px; */
-      outline: none;
-      border: none;
-      border-bottom: 2px solid var(--primary-main-500);
-      border-radius: 0;
-      font-size: 48px;
-      color: var(--primary-main-700);
-    }
-    .buttons {
-      margin-bottom: 32px;
-    }
-  }
+			outline: none;
+			border: none;
+			border-bottom: 2px solid var(--primary-main-500);
+			border-radius: 0;
+			font-size: 48px;
+			color: var(--primary-main-700);
+		}
+		.buttons {
+			margin-bottom: 32px;
+		}
+	}
 }

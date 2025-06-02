@@ -1,25 +1,17 @@
-"use client";
-import React, { useState } from "react";
-import DashboardLayout from "../components/SideBar";
-import BadgeIcon from "@mui/icons-material/Badge";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import PeopleIcon from "@mui/icons-material/People";
+import React from "react";
 import { Box, Grid, Paper, Typography, Button } from "@mui/material";
 import ContactPageOutlinedIcon from "@mui/icons-material/ContactPageOutlined";
 import GroupIcon from "@mui/icons-material/Group";
 
-// Components for each menu item
 function AdminDashboard() {
   return (
     <Box
-      // sx={{
-      //   p: { xs: 2, sm: 2, md: 3, lg: 4 },
-      //   bgcolor: "#F8FAFC",
-      //   minHeight: "1000vh",
-      //   overflowY: { xs: "auto", sm: "auto", md: "auto", lg: "visible" },
-      // }}
-      maxWidth="xl"
-      sx={{ py: 4, width: "100%", overflow: "auto", height: "80vh", pb: 5 }}>
+      sx={{
+        p: { xs: 2, sm: 2, md: 3, lg: 4 },
+        bgcolor: "#F8FAFC",
+        minHeight: "1000vh",
+        overflowY: { xs: "auto", sm: "auto", md: "auto", lg: "visible" },
+      }}>
       <Grid
         container
         spacing={2}
@@ -373,51 +365,5 @@ function AdminDashboard() {
         </Box>
       </Box>
     </Box>
-  );
-}
-
-function Facilitators() {
-  return <div>Manage Facilitators</div>;
-}
-
-function Passports() {
-  return <div>View Passports</div>;
-}
-
-// Menu config
-const adminMenu = [
-  {
-    key: "dashboard",
-    text: "Dashboard",
-    icon: <DashboardIcon />,
-    component: <AdminDashboard />,
-  },
-  {
-    key: "facilitators",
-    text: "Facilitators",
-    icon: <PeopleIcon />,
-    component: <Facilitators />,
-  },
-  {
-    key: "passports",
-    text: "Passports",
-    icon: <BadgeIcon />,
-    component: <Passports />,
-  },
-];
-
-export default function Home() {
-  const [selectedMenu, setSelectedMenu] = useState("dashboard");
-
-  const currentComponent = adminMenu.find((item) => item.key === selectedMenu)
-    ?.component ?? <div>Not Found</div>;
-
-  return (
-    <DashboardLayout
-      menuItems={adminMenu}
-      selectedMenu={selectedMenu}
-      setSelectedMenu={setSelectedMenu}>
-      {currentComponent}
-    </DashboardLayout>
   );
 }
