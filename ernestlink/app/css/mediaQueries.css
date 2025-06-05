@@ -3,19 +3,20 @@
     grid-row-start: 1;
     grid-row-end: 2;
     height: 30vh;
-    src: url("/tablet1.svg");
+    background-image: url("/images/create_artifact1.png");
   }
   .main-container {
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 45% 55%;
     grid-template-columns: none;
     align-self: center;
   }
   .create-account {
-    padding: 4px 32px;
+    /* padding: 4px 32px; */
     grid-row-start: 2;
     grid-row-end: 4;
-    height: 50vh;
+    /* height: 50vh; */
     justify-self: center;
+    width: 70%;
 
     .head {
       text-align: center;
@@ -24,11 +25,94 @@
         font-weight: 700;
       }
       p {
-        font-weight: 600;
+        /* font-weight: 600; */
+        display: none;
       }
     }
     .buttons button {
       padding: 4px 12px;
     }
+  }
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 10px;
+  }
+  .sideimage {
+    display: none;
+  }
+  .login {
+    display: none;
+  }
+  .main-container {
+    display: flex;
+    width: 100vw;
+    /* grid-template-rows: 1fr; */
+    height: 100vh;
+  }
+  .create-account {
+    width: 100%;
+    grid-row-start: none;
+    grid-row-end: none;
+    align-content: center;
+    height: auto;
+    padding: 0.4rem 3.2rem;
+  }
+  .inputs {
+    margin-bottom: 5.2rem;
+    gap: 1.2rem;
+  }
+  input {
+    width: 100%;
+    color: var(--neutral);
+    outline: none;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    outline: none;
+  }
+  .head {
+    h1 {
+      color: var(--primary-main-900);
+      margin-bottom: 1.2rem;
+      font-size: 3.2rem;
+    }
+    margin-bottom: 4.2rem;
+  }
+  .buttons {
+    display: none;
+  }
+  .text {
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  .signup-button {
+    margin-bottom: 2.8rem;
+  }
+  .signup {
+    .head {
+      margin-bottom: 2rem;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+    .text {
+      margin-bottom: 1rem;
+    }
+    .inputs {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    input {
+      padding: 0.2rem;
+    }
+  }
+  .sideimage {
+    display: none;
   }
 }
