@@ -1,6 +1,6 @@
 import Link from "next/link";
-import "@/app/css/index.css";
-import "@/app/css/mediaQueries.css";
+import "../css/index.css";
+import "../css/mediaQueries.css";
 import Create_artifact from "../components/Create_artifact";
 // import { MdOutlineEmail } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";

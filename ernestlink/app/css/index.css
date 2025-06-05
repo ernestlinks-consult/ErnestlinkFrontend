@@ -25,6 +25,12 @@ body {
   width: 100%;
   background-image: url("/images/create_artifact1.png");
   background-size: cover;
+  background-repeat: none;
+}
+.login {
+  background-image: url("/images/login.png");
+  background-repeat: none;
+  background-size: cover;
 }
 .main-container {
   display: grid;
@@ -74,9 +80,24 @@ a:link {
     border-radius: 4px;
     color: var(--white);
     background-color: var(--primary-main-700);
-    outline: nonec;
+    outline: none;
+    border: none;
   }
   margin-bottom: 52px;
+}
+input {
+  border: none;
+  outline: none;
+}
+.input-group {
+  width: 100%;
+  color: var(--neutral);
+  outline: none;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 8px;
+  border: 1.5px solid var(--neutral-800);
+  display: flex;
 }
 /* ------- CREATE ACCOUNTELEMENTS------------ */
 .create-account {
@@ -108,9 +129,9 @@ a:link {
     color: var(--neutral);
     outline: none;
     font-size: 18px;
-    border: 1.5px solid var(--neutral-800);
     border-radius: 8px;
     padding: 8px;
+    /* border: 1.5px solid var(--neutral-800); */
   }
   input::placeholder {
     color: var(--grey-color);
