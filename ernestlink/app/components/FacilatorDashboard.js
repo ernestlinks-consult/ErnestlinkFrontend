@@ -7,18 +7,18 @@ import {
   Box,
   Container,
   Grid,
-
-  Chip
-} from "@mui/material"
+  Chip,
+} from "@mui/material";
 
 export default function FacilatorDashboard() {
   return (
-    <Container maxWidth="xl" sx={{ py: 4,  width:"100%", overflow:"auto", height:"80vh",pb:5 }}>
-      <Box sx={{ mb: 4, overflow:"auto" }}>
+    <Container
+      maxWidth="xl"
+      sx={{ py: 4, width: "100%", overflow: "auto", height: "80vh", pb: 5 }}>
+      <Box sx={{ mb: 4, overflow: "auto" }}>
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", color: "#1f2937", mb: 1 }}
-        >
+          sx={{ fontWeight: "bold", color: "#1f2937", mb: 1 }}>
           Welcome, John Facilitator
         </Typography>
         <Typography variant="body1" sx={{ color: "#6b7280" }}>
@@ -27,22 +27,26 @@ export default function FacilatorDashboard() {
       </Box>
 
       {/* Status Cards */}
-      <Grid container spacing={2} sx={{ mb: 4,  display:"grid", gridTemplateColumns: {
-      xs: "1fr",         
-      sm: "repeat(2, 1fr)", 
-      md: "repeat(3, 1fr)", 
-      lg: "repeat(4, 1fr)" }, 
-     }}>
-
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          mb: 4,
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(4, 1fr)",
+          },
+        }}>
         <Grid item xs={12} md={6}>
           <Card
             sx={{
               borderLeft: "4px solid #1e3a8a",
               boxShadow:
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
-            }}
-          >
-
+                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+            }}>
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -52,26 +56,20 @@ export default function FacilatorDashboard() {
                   mr: 2,
                   display: "flex",
                   alignItems: "center",
-                  
-                  justifyContent: "space-between"
-                }}
-              >
 
+                  justifyContent: "space-between",
+                }}>
                 <FileText size={24} color="#1e40af" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
-                >
-
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
                   Total Applications
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
-                >
-
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
                   3
                 </Typography>
               </Box>
@@ -84,10 +82,8 @@ export default function FacilatorDashboard() {
             sx={{
               borderLeft: "4px solid #059669",
               boxShadow:
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
-            }}
-          >
-
+                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+            }}>
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -97,24 +93,19 @@ export default function FacilatorDashboard() {
                   mr: 2,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
+                  justifyContent: "center",
+                }}>
                 <CheckCircle size={24} color="#059669" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
-                >
-
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
                   Approved
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
-                >
-
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
                   2
                 </Typography>
               </Box>
@@ -127,9 +118,8 @@ export default function FacilatorDashboard() {
             sx={{
               borderLeft: "4px solid #f59e0b",
               boxShadow:
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
-            }}
-          >
+                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+            }}>
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -139,25 +129,19 @@ export default function FacilatorDashboard() {
                   mr: 2,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-
+                  justifyContent: "center",
+                }}>
                 <Clock size={24} color="#f59e0b" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
-                >
-
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
                   Pending
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
-                >
-
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
                   1
                 </Typography>
               </Box>
@@ -170,10 +154,8 @@ export default function FacilatorDashboard() {
             sx={{
               borderLeft: "4px solid #ef4444",
               boxShadow:
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
-            }}
-          >
-
+                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+            }}>
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -183,25 +165,19 @@ export default function FacilatorDashboard() {
                   mr: 2,
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-
+                  justifyContent: "center",
+                }}>
                 <AlertCircle size={24} color="#ef4444" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
-                >
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
                   Rejected
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
-                >
-
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
                   0
                 </Typography>
               </Box>
@@ -214,26 +190,23 @@ export default function FacilatorDashboard() {
       <Typography
         variant="h5"
         sx={{ fontWeight: "bold", color: "#1f2937", mb: 2 }}
-        Quick Actions
-      </Typography>
+        Quick
+        Actions></Typography>
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} md={6}>
           <Card
             sx={{
               boxShadow:
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
-            }}
-          >
+                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+            }}>
             <CardContent
               sx={{
                 p: 4,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                textAlign: "center"
-              }}
-            >
-
+                textAlign: "center",
+              }}>
               <Box
                 sx={{
                   backgroundColor: "#dbeafe",
@@ -243,9 +216,8 @@ export default function FacilatorDashboard() {
                   display: "flex",
                   alignItems: "center",
 
-                  justifyContent: "center"
-                }}
-              >
+                  justifyContent: "center",
+                }}>
                 <FileText size={24} color="#1e40af" />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
@@ -258,10 +230,8 @@ export default function FacilatorDashboard() {
                 variant="contained"
                 sx={{
                   backgroundColor: "#1e3a8a",
-                  "&:hover": { backgroundColor: "#1e40af" }
-                }}
-              >
-
+                  "&:hover": { backgroundColor: "#1e40af" },
+                }}>
                 Register Passport
               </Button>
             </CardContent>
@@ -272,19 +242,16 @@ export default function FacilatorDashboard() {
           <Card
             sx={{
               boxShadow:
-                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
-            }}
-          >
-
+                "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+            }}>
             <CardContent
               sx={{
                 p: 4,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                textAlign: "center"
-              }}
-            >
+                textAlign: "center",
+              }}>
               <Box
                 sx={{
                   backgroundColor: "#dbeafe",
@@ -294,10 +261,8 @@ export default function FacilatorDashboard() {
                   display: "flex",
                   alignItems: "center",
 
-                  justifyContent: "center"
-                }}
-              >
-
+                  justifyContent: "center",
+                }}>
                 <Clock size={24} color="#1e40af" />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
@@ -314,11 +279,9 @@ export default function FacilatorDashboard() {
                   "&:hover": {
                     borderColor: "#9ca3af",
 
-                    backgroundColor: "rgba(0, 0, 0, 0.04)"
-                  }
-                }}
-              >
-
+                    backgroundColor: "rgba(0, 0, 0, 0.04)",
+                  },
+                }}>
                 View Applications
               </Button>
             </CardContent>
@@ -333,10 +296,8 @@ export default function FacilatorDashboard() {
           justifyContent: "space-between",
           alignItems: "center",
 
-          mb: 2
-        }}
-      >
-
+          mb: 2,
+        }}>
         <Typography variant="h5" sx={{ fontWeight: "bold", color: "#1f2937" }}>
           Recent Applications
         </Typography>
@@ -348,11 +309,9 @@ export default function FacilatorDashboard() {
             "&:hover": {
               backgroundColor: "transparent",
 
-              textDecoration: "underline"
-            }
-          }}
-        >
-
+              textDecoration: "underline",
+            },
+          }}>
           View All
         </Button>
       </Box>
@@ -378,7 +337,6 @@ export default function FacilatorDashboard() {
         />
       </Box>
     </Container>
-
   );
 }
 
@@ -415,38 +373,31 @@ function ApplicationCard({ name, id, date, status }) {
 
   const statusConfig = getStatusConfig(status);
 
-
   return (
     <Card
       sx={{
         boxShadow:
-          "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
-      }}
-    >
+          "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+      }}>
       <CardContent
         sx={{
           p: 3,
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center"
-        }}
-      >
+          alignItems: "center",
+        }}>
         <Box>
           <Typography variant="h6" sx={{ fontWeight: 600, color: "#1f2937" }}>
             {name}
           </Typography>
           <Typography
             variant="body2"
-            sx={{ color: "#6b7280", fontSize: "0.875rem" }}
-          >
-
+            sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
             ID: {id}
           </Typography>
           <Typography
             variant="body2"
-            sx={{ color: "#6b7280", fontSize: "0.875rem" }}
-          >
-
+            sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
             Submitted on {date}
           </Typography>
         </Box>
@@ -459,13 +410,11 @@ function ApplicationCard({ name, id, date, status }) {
             color: statusConfig.color,
             fontWeight: 500,
             "& .MuiChip-icon": {
-              color: statusConfig.color
-            }
-
+              color: statusConfig.color,
+            },
           }}
         />
       </CardContent>
     </Card>
-
   );
 }
