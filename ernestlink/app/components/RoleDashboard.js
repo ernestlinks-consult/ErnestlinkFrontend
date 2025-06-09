@@ -2,10 +2,12 @@
 // import React, { useState } from "react";
 import React from "react";
 import DashboardLayout from "./SideBar";
+import DashboardLayoutt from "./SideBarTest";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import BadgeIcon from "@mui/icons-material/Badge";
 import AdminDashboard from "./AdminDashBoard";
+import FacilatorDashboard from "./FacilatorDashboard";
 import Facilitators from "./Facilitators";
 import Passports from "./Passports";
 import { Box } from "@mui/material";
@@ -41,7 +43,7 @@ export default function RoleDashboard({ role }) {
       text: "Dashboard",
       title: "Facilitator Dashboard",
       icon: <DashboardIcon />,
-      component: <AdminDashboard />,
+      component: <FacilatorDashboard />,
     },
     {
       key: "passports",
