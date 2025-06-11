@@ -1,5 +1,5 @@
-import "@/app/css/index.css";
-import "@/app/css/mediaQueries.css";
+import "../css/index.css";
+import "../css/mediaQueries.css";
 import Link from "next/link";
 import Create_artifact from "../components/Create_artifact";
 
