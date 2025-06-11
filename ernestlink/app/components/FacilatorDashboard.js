@@ -196,8 +196,9 @@ export default function FacilatorDashboard() {
       <Typography
         variant="h5"
         sx={{ fontWeight: "bold", color: "#1f2937", mb: 2 }}
-        Quick
-        Actions></Typography>
+        // Quick
+        // Actions
+      ></Typography>
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} md={6}>
           <Card
