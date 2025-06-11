@@ -27,23 +27,15 @@ const FacilitatorForm = ({ open, onClose, onAdd, onEdit, editData }) => {
       setForm({
         name: editData.name || "",
         email: editData.email || "",
-        password: editData.password || "",
       });
     } else {
       // Reset the form if it's not edit mode
       setForm({
         name: "",
         email: "",
-        password: "",
       });
     }
   }, [editData]);
-
-  React.useEffect(() => {
-    if (!open) {
-      setShowPassword(false);
-    }
-  }, [open]);
 
   const handleSubmit = () => {
     const facilitator = {
@@ -65,18 +57,14 @@ const FacilitatorForm = ({ open, onClose, onAdd, onEdit, editData }) => {
     onClose();
   };
 
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
-
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Add Facilitator</DialogTitle>
       <DialogContent>
         <TextField
           fullWidth
+          required
+          // autoFocus
           label="Name"
           name="name"
           margin="normal"
@@ -91,41 +79,6 @@ const FacilitatorForm = ({ open, onClose, onAdd, onEdit, editData }) => {
           margin="normal"
           value={form.email}
           onChange={handleChange}
-        />
-        {/* <TextField
-          fullWidth
-          label="Password"
-          name="password"
-          type="password"
-          margin="normal"
-          value={form.password}
-          onChange={handleChange}
-        /> */}
-        <TextField
-          fullWidth
-          label="Password"
-          name="password"
-          type={showPassword ? "text" : "password"}
-          margin="normal"
-          value={form.password}
-          onChange={handleChange}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  sx={{
-                    color: "#d1d5dg",
-                    "&:hover": {
-                      color: "oklch(27.9% 0.041 260.031)",
-                    },
-                  }}
-                  onClick={togglePasswordVisibility}
-                  edge="end">
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
         />
       </DialogContent>
       <DialogActions>

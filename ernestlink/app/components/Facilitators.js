@@ -1,7 +1,14 @@
 "use client";
 
 import { React, useState } from "react";
-import { Box, Typography, Button, IconButton, Tooltip } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  Container,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 import FacilitatorForm from "./AddFacilitatorForm";
 
@@ -42,7 +49,11 @@ export default function Facilitators() {
       {
         ...newFacilitator,
         id: Date.now(),
-        dateAdded: new Date().toLocaleDateString(),
+        dateAdded: new Date().toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }),
       },
     ]);
     setOpen(false);
@@ -65,32 +76,24 @@ export default function Facilitators() {
   };
 
   return (
-    <Box
-      sx={{
-        py: 1,
-        width: "100%",
-        overflow: "auto",
-        height: "80vh",
-        pb: 5,
-      }}
-    >
+    <Container
+      maxWidth="xl"
+      sx={{ py: 4, width: "100%", overflow: "auto", height: "80vh", pb: 5 }}>
       <Box
         sx={{
           flex: 1,
           minHeight: { xs: "30px", sm: "10vh" },
-          mt: 5,
+          // mt: 5,
           p: 3,
           border: "2px solid #007BFF30",
           borderRadius: 2,
           bgcolor: "#fff",
-        }}
-      >
+        }}>
         <Box
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          mb={2}
-        >
+          mb={2}>
           <Typography variant="h6" sx={{ fontWeight: 600, color: "#0505AA" }}>
             Facilitators
           </Typography>
@@ -106,8 +109,7 @@ export default function Facilitators() {
                 color: "#fff",
               },
             }}
-            onClick={() => setOpen(true)}
-          >
+            onClick={() => setOpen(true)}>
             Add Facilitator
           </Button>
 
@@ -119,8 +121,7 @@ export default function Facilitators() {
             overflowX: "auto",
             borderTop: "1px solid #ccc",
             borderBottom: "1px solid #ccc",
-          }}
-        >
+          }}>
           {/* Table Header */}
           <Box
             sx={{
@@ -130,8 +131,7 @@ export default function Facilitators() {
               p: 1.5,
               fontWeight: "bold",
               color: "#333",
-            }}
-          >
+            }}>
             <Box width="30%">Name</Box>
             <Box width="30%">Email</Box>
             <Box width="20%">Date Added</Box>
@@ -157,26 +157,11 @@ export default function Facilitators() {
                   p: 1.5,
                   color: "#555",
                   "&:hover": { bgcolor: "#f9f9f9" },
-                }}
-              >
+                }}>
                 <Box width="30%">{f.name}</Box>
                 <Box width="30%">{f.email}</Box>
                 <Box width="20%">{f.dateAdded}</Box>
                 <Box width="20%" textAlign="center">
-                  {/* <Tooltip title="Edit">
-                    <IconButton
-                      onClick={() => handleEditClick(f)}
-                      sx={{
-                        color: "rgba(5, 5, 170, 0.7)",
-                        "&:hover": {
-                          color: "rgba(5, 5, 170, 1)",
-                        },
-                      }}
-                      size="small"
-                    >
-                      <Edit fontSize="small" />
-                    </IconButton>
-                  </Tooltip> */}
                   <Tooltip title="Delete">
                     <IconButton
                       onClick={() => handleDeleteFacilitator(f.id)}
@@ -186,8 +171,7 @@ export default function Facilitators() {
                           color: "rgba(234, 6, 6, 1)",
                         },
                       }}
-                      size="small"
-                    >
+                      size="small">
                       <Delete fontSize="small" />
                     </IconButton>
                   </Tooltip>
@@ -209,6 +193,7 @@ export default function Facilitators() {
           editData={editFacilitator}
         />
       </Box>
-    </Box>
+      {/* </Box> */}
+    </Container>
   );
 }

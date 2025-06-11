@@ -3,7 +3,7 @@ import Link from "next/link";
 import "../css/index.css";
 import "../css/mediaQueries.css";
 import Create_artifact from "../components/Create_artifact";
-import { Envelope, Lock, Eye } from "react-bootstrap-icons";
+// import { Envelope, Lock, Eye } from "react-bootstrap-icons";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
