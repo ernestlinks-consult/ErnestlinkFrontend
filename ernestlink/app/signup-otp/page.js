@@ -1,8 +1,8 @@
-import Bubble from "@/app/Images/Signup/bubble.png";
+import Bubble from "../../public/Images/bubble.png";
 import Image from "next/image";
 import Link from "next/link";
-import "@/app/css/index.css";
-import "@/app/css/mediaQueries.css";
+import "../css/index.css";
+import "../css/mediaQueries.css";
 import Create_artifact from "../components/Create_artifact";
 
 export default function DesktopOtp() {
