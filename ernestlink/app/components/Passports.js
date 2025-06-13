@@ -134,6 +134,8 @@ export default function PassportApplications() {
           <Button
             variant="outlined"
             startIcon={<Add />}
+            component="a"
+            href = "/add-new-passport"
             sx={{
               color: "#fff",
               borderColor: "#0505AA",
