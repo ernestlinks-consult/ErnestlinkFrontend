@@ -1,0 +1,217 @@
+import { useState } from "react";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  TextField,
+  Grid,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+  Alert,
+  AlertTitle,
+} from "@mui/material";
+import { ArrowBack, ArrowForward, WarningAmber } from "@mui/icons-material";
+
+function WitnessForm({ data, onNext, onPrevious }) {
+  const [formData, setFormData] = useState({
+    witnessFullName: data.witnessFullName || "",
+    witnessOccupation: data.witnessOccupation || "",
+    witnessTelephone: data.witnessTelephone || "",
+    witnessEmail: data.witnessEmail || "",
+    witnessResidentialAddress: data.witnessResidentialAddress || "",
+    witnessPostalAddress: data.witnessPostalAddress || "",
+    witnessIdOrPassportNo: data.witnessIdOrPassportNo || "",
+    witnessPlaceOfIssue: data.witnessPlaceOfIssue || "",
+    witnessDateOfIssue: data.witnessDateOfIssue || "",
+  });
+
+  const validOccupations = [
+    "Pastor",
+    "Lawyer",
+    "Doctor",
+    "Engineer",
+    "Managing Director",
+    "Head Master",
+  ];
+
+  const handleChange = (field) => (event) => {
+    setFormData((prev) => ({ ...prev, [field]: event.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onNext(formData);
+  };
+
+  return (
+    <Box
+      sx={{
+        flex: 1,
+        minHeight: { xs: "30px", sm: "10vh" },
+        p: 3,
+        border: "2px solid #007BFF30",
+        borderRadius: 2,
+        bgcolor: "#F8F8FF",
+      }}
+    >
+      <CardHeader
+        title={
+          <Typography variant="h5">
+            Witness (To be filled by the Admin)
+          </Typography>
+        }
+      />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" gutterBottom>
+          This section should be completed by an authorized administrator. The
+          witness must have a valid stamp and be one of the qualified
+          professionals listed below.
+        </Typography>
+
+        <Alert severity="warning" sx={{ mb: 3 }} icon={<WarningAmber />}>
+          <AlertTitle>Important</AlertTitle>
+          The witness must be one of the following: Pastor, Lawyer, Doctor,
+          Engineer, Managing Director, or Head Master, and must have a valid
+          official stamp.
+        </Alert>
+
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                required
+                label="Full Name"
+                value={formData.witnessFullName}
+                onChange={handleChange("witnessFullName")}
+              />
+            </Grid>
+
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <FormControl fullWidth required>
+                <InputLabel>Occupation</InputLabel>
+                <Select
+                  value={formData.witnessOccupation}
+                  onChange={handleChange("witnessOccupation")}
+                  label="Occupation"
+                >
+                  {validOccupations.map((occupation) => (
+                    <MenuItem key={occupation} value={occupation}>
+                      {occupation}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                required
+                label="Telephone"
+                type="tel"
+                value={formData.witnessTelephone}
+                onChange={handleChange("witnessTelephone")}
+              />
+            </Grid>
+
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                required
+                label="Email"
+                type="email"
+                value={formData.witnessEmail}
+                onChange={handleChange("witnessEmail")}
+              />
+            </Grid>
+
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                required
+                label="Residential Address"
+                value={formData.witnessResidentialAddress}
+                onChange={handleChange("witnessResidentialAddress")}
+              />
+            </Grid>
+
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                required
+                label="Postal Address"
+                value={formData.witnessPostalAddress}
+                onChange={handleChange("witnessPostalAddress")}
+              />
+            </Grid>
+
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                required
+                label="ID or Passport Number"
+                value={formData.witnessIdOrPassportNo}
+                onChange={handleChange("witnessIdOrPassportNo")}
+              />
+            </Grid>
+
+            <Grid item size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                required
+                label="Place of Issue"
+                value={formData.witnessPlaceOfIssue}
+                onChange={handleChange("witnessPlaceOfIssue")}
+              />
+            </Grid>
+
+            <Grid item size={{ xs: 12 }}>
+              <TextField
+                fullWidth
+                required
+                label="Date of Issue"
+                type="date"
+                InputLabelProps={{ shrink: true }}
+                value={formData.witnessDateOfIssue}
+                onChange={handleChange("witnessDateOfIssue")}
+              />
+            </Grid>
+          </Grid>
+
+          <Box mt={4} display="flex" justifyContent="space-between">
+            {onPrevious && (
+              <Button
+                variant="outlined"
+                startIcon={<ArrowBack />}
+                onClick={onPrevious}
+              >
+                Previous
+              </Button>
+            )}
+            <Button
+              type="submit"
+              variant="contained"
+              endIcon={<ArrowForward />}
+              disabled={
+                !formData.witnessFullName ||
+                !formData.witnessOccupation ||
+                !formData.witnessTelephone ||
+                !formData.witnessEmail
+              }
+            >
+              Next
+            </Button>
+          </Box>
+        </form>
+      </CardContent>
+    </Box>
+  );
+}
+
+export default WitnessForm;

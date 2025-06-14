@@ -1,5 +1,5 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -14,19 +14,19 @@ import {
   MenuItem,
   Select,
   InputLabel,
-  FormControl
-} from '@mui/material';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+  FormControl,
+} from "@mui/material";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-export default function PassportApplicationForm({ data, onNext }) {
+export default function Pass({ data, onNext }) {
   const [formData, setFormData] = useState({
-    passportType: data?.passportType || '',
-    amountPaid: data?.amountPaid || '',
-    paymentStatus: data?.paymentStatus || '',
+    passportType: data?.passportType || "",
+    amountPaid: data?.amountPaid || "",
+    paymentStatus: data?.paymentStatus || "",
     dateOfRegistration: data?.dateOfRegistration || null,
   });
 
@@ -44,11 +44,14 @@ export default function PassportApplicationForm({ data, onNext }) {
         border: "2px solid #007BFF30",
         borderRadius: 2,
         bgcolor: "#F8F8FF",
-      }}>
+      }}
+    >
       <CardHeader
-        title={<Typography variant="h5" className="mb-1 font-semibold">
+        title={
+          <Typography variant="h5" className="mb-1 font-semibold">
             Passport Application Details
-          </Typography>}
+          </Typography>
+        }
         subheader="Please provide the basic details for your passport application"
       />
       <CardContent>
@@ -62,7 +65,10 @@ export default function PassportApplicationForm({ data, onNext }) {
                   value={formData.passportType}
                   label="Passport Type"
                   onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, passportType: e.target.value }))
+                    setFormData((prev) => ({
+                      ...prev,
+                      passportType: e.target.value,
+                    }))
                   }
                   required
                 >
@@ -78,7 +84,10 @@ export default function PassportApplicationForm({ data, onNext }) {
                 type="number"
                 value={formData.amountPaid}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, amountPaid: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    amountPaid: e.target.value,
+                  }))
                 }
                 required
               />
@@ -91,7 +100,10 @@ export default function PassportApplicationForm({ data, onNext }) {
                   value={formData.paymentStatus}
                   label="Payment Status"
                   onChange={(e) =>
-                    setFormData((prev) => ({ ...prev, paymentStatus: e.target.value }))
+                    setFormData((prev) => ({
+                      ...prev,
+                      paymentStatus: e.target.value,
+                    }))
                   }
                   required
                 >
@@ -124,7 +136,7 @@ export default function PassportApplicationForm({ data, onNext }) {
               </LocalizationProvider>
             </Grid>
           </Grid>
-          
+
           <Box display="flex" justifyContent="flex-end" pt={3}>
             <Button
               type="submit"

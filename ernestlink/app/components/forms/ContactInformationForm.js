@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
+  Box,
+  Grid,
   Typography,
-  TextField
-} from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+  TextField,
+  Button,
+  Divider,
+} from "@mui/material";
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
 export default function ContactInformationForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
-    nationalIdNumber: data?.nationalIdNumber || '',
-    ssnitNumber: data?.ssnitNumber || '',
-    telephoneNumber: data?.telephoneNumber || '',
-    emailAddress: data?.emailAddress || '',
+    houseNumber: data.houseNumber || "",
+    streetName: data.streetName || "",
+    digitalAddress: data.digitalAddress || "",
+    postalAddress: data.postalAddress || "",
+    suburb: data.suburb || "",
+    cityOfResidence: data.cityOfResidence || "",
+    countryOfResidence: data.countryOfResidence || "",
+    postalZipCode: data.postalZipCode || "",
   });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,81 +32,138 @@ export default function ContactInformationForm({ data, onNext, onPrevious }) {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto p-4">
-      <CardHeader
-        title={<Typography variant="h5">ID & Contact Information</Typography>}
-        subheader="Please provide your identification and contact details"
-      />
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <TextField
-            fullWidth
-            label="National ID Number (Ghana Card)"
-            value={formData.nationalIdNumber}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, nationalIdNumber: e.target.value }))
-            }
-            required
-          />
+    <Box
+      sx={{
+        flex: 1,
+        minHeight: { xs: "30px", sm: "10vh" },
+        p: 3,
+        border: "2px solid #007BFF30",
+        borderRadius: 2,
+        bgcolor: "#F8F8FF",
+      }}
+    >
+      <Typography variant="h6" fontWeight={600} gutterBottom>
+        Residential Information_3
+      </Typography>
+      <Typography variant="body2" color="text.secondary" mb={3}>
+        Please provide your current residential address details.
+      </Typography>
 
-          <TextField
-            fullWidth
-            label="SSNIT Number (Optional)"
-            value={formData.ssnitNumber}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, ssnitNumber: e.target.value }))
-            }
-          />
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="houseNumber"
+              label="House Number"
+              value={formData.houseNumber}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="streetName"
+              label="Street Name"
+              value={formData.streetName}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
 
-          <TextField
-            fullWidth
-            label="Telephone Number"
-            type="tel"
-            value={formData.telephoneNumber}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, telephoneNumber: e.target.value }))
-            }
-            required
-          />
+          <Grid item xs={12}>
+            <TextField
+              id="digitalAddress"
+              label="Digital Address (GhanaPost GPS)"
+              value={formData.digitalAddress}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
 
-          <TextField
-            fullWidth
-            label="Email Address"
-            type="email"
-            value={formData.emailAddress}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, emailAddress: e.target.value }))
-            }
-            required
-          />
+          <Grid item xs={12}>
+            <TextField
+              id="postalAddress"
+              label="Postal Address"
+              value={formData.postalAddress}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
 
-          <div className="flex justify-between pt-6">
-            {onPrevious && (
-              <Button
-                type="button"
-                variant="outlined"
-                startIcon={<ArrowBackIcon />}
-                onClick={onPrevious}
-              >
-                Previous
-              </Button>
-            )}
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="suburb"
+              label="Suburb"
+              value={formData.suburb}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="cityOfResidence"
+              label="City of Residence"
+              value={formData.cityOfResidence}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="countryOfResidence"
+              label="Country of Residence"
+              value={formData.countryOfResidence}
+              onChange={handleChange}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="postalZipCode"
+              label="Postal/Zip Code"
+              value={formData.postalZipCode}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
+        </Grid>
+
+        <Divider sx={{ my: 4 }} />
+
+        <Box display="flex" justifyContent="space-between">
+          {onPrevious && (
             <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              endIcon={<ArrowForwardIcon />}
-              disabled={
-                !formData.nationalIdNumber ||
-                !formData.telephoneNumber ||
-                !formData.emailAddress
-              }
+              variant="outlined"
+              onClick={onPrevious}
+              startIcon={<ArrowLeft />}
             >
-              Next
+              Previous
             </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+          )}
+          <Button
+            type="submit"
+            variant="contained"
+            endIcon={<ArrowRight />}
+            disabled={
+              !formData.houseNumber ||
+              !formData.streetName ||
+              !formData.digitalAddress ||
+              !formData.postalAddress ||
+              !formData.cityOfResidence ||
+              !formData.countryOfResidence
+            }
+          >
+            Next
+          </Button>
+        </Box>
+      </form>
+    </Box>
   );
 }
