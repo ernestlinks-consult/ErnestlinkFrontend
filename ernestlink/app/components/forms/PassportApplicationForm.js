@@ -17,7 +17,7 @@ import {
   FormControl
 } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { ArrowRight } from '@mui/icons-material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -46,7 +46,7 @@ export default function PassportApplicationForm({ data, onNext }) {
         bgcolor: "#F8F8FF",
       }}>
       <CardHeader
-        title={<Typography variant="h5" className="mb-1 font-semibold">
+        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>
             Passport Application Details
           </Typography>}
         subheader="Please provide the basic details for your passport application"
@@ -101,6 +101,7 @@ export default function PassportApplicationForm({ data, onNext }) {
               </FormControl>
             </Grid>
             <Grid size={6}>
+              
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DatePicker
                   label="Date of Registration"
@@ -115,13 +116,11 @@ export default function PassportApplicationForm({ data, onNext }) {
                     textField: {
                       fullWidth: true,
                       required: true,
-                      InputProps: {
-                        endAdornment: <CalendarTodayIcon />,
-                      },
                     },
                   }}
                 />
               </LocalizationProvider>
+
             </Grid>
           </Grid>
           
@@ -129,8 +128,12 @@ export default function PassportApplicationForm({ data, onNext }) {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
-              endIcon={<ArrowForwardIcon />}
+              sx={{color: "#fff",
+                textTransform: "none",
+                fontWeight: 400,
+                bgcolor: "#0505AA",
+              }}
+              endIcon={<ArrowRight />}
               disabled={
                 !formData.passportType ||
                 !formData.amountPaid ||

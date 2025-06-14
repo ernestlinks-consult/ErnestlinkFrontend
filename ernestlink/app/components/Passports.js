@@ -12,7 +12,7 @@ import {
   Container,
 } from "@mui/material";
 import { Search as SearchIcon, Add, Edit, Delete } from "@mui/icons-material";
-import PassportForm from "./AddNewPassport";
+import PassportForm from "./AddNewPassporttt";
 
 const initialApplicants = [
   {
@@ -328,7 +328,7 @@ export default function PassportApplications({ onRegisterNew }) {
       </Box>
 
       {/* Modal Form */}
-      <PassportForm
+      {/* <PassportForm
         open={open}
         onClose={() => {
           setOpen(false);
@@ -337,7 +337,7 @@ export default function PassportApplications({ onRegisterNew }) {
         onAdd={handleAdd}
         onEdit={handleEdit}
         editData={editApplicant}
-      />
+      /> */}
     </Container>
   );
 }

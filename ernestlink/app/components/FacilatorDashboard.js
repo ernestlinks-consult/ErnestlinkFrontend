@@ -240,8 +240,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                 rel="noopener noreferrer"
                 onClick={onRegisterNew}
                 sx={{
-                  backgroundColor: "#1e3a8a",
-                  "&:hover": { backgroundColor: "#1e40af" },
+                fontWeight: 400,
+                bgcolor: "#0505AA",
                 }}>
                 Register Passport
               </Button>
