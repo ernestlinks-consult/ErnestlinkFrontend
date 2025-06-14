@@ -17,6 +17,7 @@
     "@mui/material": "^7.1.0",
     "@mui/toolpad": "^0.1.51",
     "autoprefixer": "^10.4.21",
+    "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
