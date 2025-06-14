@@ -9,13 +9,35 @@ import LockIcon from "@mui/icons-material/Lock";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useState } from "react";
 // import { MdOutlineEmail } from "react-icons/fa";
+import { login as loginApi } from "../../services/api";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-  function handleVisiblePassword() {}
+  const handleAdminLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    try {
+      const data = await loginApi(mail, password);
+      // save access and refresh tokens in  local storage
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
+
+      // Redirect to superadmin dashboard on successful login
+      router.push("/dashboard/superadmin");
+    } catch (err) {
+      setError(err.response?.data?.message || err.message || "Login failed");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="main-container">
@@ -23,20 +45,10 @@ export default function Login() {
         <div className="head">
           <h1>Login</h1>
           <p>
-            {
-              " Enter your phone number below.We'll send you a code to complete your sign-in"
-            }
+            {" Enter your phone number below.We'll send you a code to complete your sign-in"}
           </p>
         </div>
-        <form
-          method="post"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const x = { mail, password };
-            console.log(x);
-            setMail("");
-            setPassword("");
-          }}>
+        <form method="post" onSubmit={handleAdminLogin}>
           <div className="inputs">
             <div className="input-group">
               {!mail && (
@@ -67,7 +79,6 @@ export default function Login() {
                 />
               )}
               <input
-                // type={visible}
                 type={visible ? "text" : "password"}
                 value={password}
                 placeholder="Password"
@@ -75,10 +86,10 @@ export default function Login() {
               />
             </div>
           </div>
-
+          {error && <div style={{ color: "red", marginBottom: 8 }}>{error}</div>}
           <div className="signup-button">
-            <button type="submit" className="submit">
-              Login
+            <button type="submit" className="submit" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
             </button>
           </div>
         </form>
