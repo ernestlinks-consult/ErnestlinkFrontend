@@ -7,7 +7,7 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import AdminDashboard from "./AdminDashBoard";
 import FacilatorDashboard from "./FacilatorDashboard";
 import Facilitators from "./Facilitators";
-import RegistrationFlow from "./AddNewPassportt";
+import RegistrationFlow from "./AddNewPassport";
 import Passports from "./Passports";
 import { Box } from "@mui/material";
 

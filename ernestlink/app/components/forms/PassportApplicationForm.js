@@ -43,7 +43,7 @@ export default function PassportApplicationForm({ data, onNext }) {
         p: 3,
         border: "2px solid #007BFF30",
         borderRadius: 2,
-        bgcolor: "#fff",
+        bgcolor: "#F8F8FF",
       }}>
       <CardHeader
         title={<Typography variant="h5" className="mb-1 font-semibold">
@@ -143,7 +143,6 @@ export default function PassportApplicationForm({ data, onNext }) {
           </Box>
         </form>
       </CardContent>
-      
     </Box>
   );
 }
