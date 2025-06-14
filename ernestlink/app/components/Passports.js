@@ -136,6 +136,8 @@ export default function PassportApplications() {
             startIcon={<Add />}
             component="a"
             href = "/add-new-passport"
+            target="_blank"
+            rel="noopener noreferrer"
             sx={{
               color: "#fff",
               borderColor: "#0505AA",
@@ -147,7 +149,8 @@ export default function PassportApplications() {
                 color: "#0505AA",
               },
             }}
-            onClick={() => setOpen(true)}>
+            // onClick={() => setOpen(true)}
+            >
             Register New Passport
           </Button>
         </Box>
