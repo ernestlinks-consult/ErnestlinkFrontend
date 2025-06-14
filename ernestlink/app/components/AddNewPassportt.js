@@ -1,25 +1,47 @@
+"use client"
 import React, { useState } from 'react';
 import {
   Box,
   Button,
   Container,
   Typography,
-  LinearProgress,
+  // BorderLinearProgress,
   IconButton,
   Stack,
 } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import PassportApplicationForm from "./forms/PassportApplicationForm";
+import PersonalInformationForm from './forms/PersonalInformationForm';
+import ContactInformationForm from './forms/ContactInformationForm.js';
+import ResidentialInformationForm from './forms/ResidentialInformationForm';
+import EducationForm from './forms/EducationForm';
+import ParentalInformationForm from './forms/ParentalInformationForm';
+import DocumentUploadsForm from './forms/DocumentUploadsForm';
+import GuarantorsForm from './forms/GuarantorsForm';
+import WitnessForm from './forms/WitnessForm';
+import ReviewSubmitForm from './forms/ReviewSubmitForm';
+import { useRouter } from "next/navigation";
 
-import { PassportApplicationForm } from '../components/forms/PassportApplicationForm';
-import { PersonalInformationForm } from '../components/forms/PersonalInformationForm';
-import { ContactInformationForm } from '../components/forms/ContactInformationForm';
-import { ResidentialInformationForm } from '../components/forms/ResidentialInformationForm';
-import { EducationForm } from '../components/forms/EducationForm';
-import { ParentalInformationForm } from '../components/forms/ParentalInformationForm';
-import { DocumentUploadsForm } from '../components/forms/DocumentUploadsForm';
-import { GuarantorsForm } from '../components/forms/GuarantorsForm';
-import { WitnessForm } from '../components/forms/WitnessForm';
-import { ReviewSubmitForm } from '../components/forms/ReviewSubmitForm';
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: theme.palette.grey[200],
+    ...theme.applyStyles('dark', {
+      backgroundColor: theme.palette.grey[800],
+    }),
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: '#0505AA',
+    ...theme.applyStyles('dark', {
+      backgroundColor: '#F8FAFC',
+    }),
+  },
+}));
 
 export const RegistrationFlow = ({ onBack }) => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -27,6 +49,7 @@ export const RegistrationFlow = ({ onBack }) => {
 
   const totalSteps = 10;
   const progress = (currentStep / totalSteps) * 100;
+  const router = useRouter();
 
   const steps = [
     { id: 1, title: 'Passport Application Details', component: PassportApplicationForm },
@@ -66,17 +89,26 @@ export const RegistrationFlow = ({ onBack }) => {
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#f9fafb' }}>
       {/* Header */}
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: 'white', boxShadow: 1 }}>
-        <Container maxWidth="md">
-          <Stack direction="row" alignItems="center" justifyContent="space-between" py={2}>
+      <Container 
+        maxWidth="xl"
+        sx={{
+        py: 4,
+        width: "100%",
+        overflow: "auto",
+        pb: 5,
+      }}>
+          <Stack direction="row" alignItems="center" justifyContent="space-between" 
+          pb={2}
+          >
             <Button
               startIcon={<ArrowBackIcon />}
               onClick={onBack}
-              variant="outlined"
-              color="primary"
+              // variant="outlined"
+              sx={{color:"#0505AA"}}
             >
-              Back to Home
+              {/* Back to Home */}
             </Button>
+            
 
             <Box textAlign="center" flex={1}>
               <Typography variant="h6">Step {currentStep} of {totalSteps}</Typography>
@@ -91,11 +123,11 @@ export const RegistrationFlow = ({ onBack }) => {
               </Typography>
             </Box>
           </Stack>
-          <LinearProgress variant="determinate" value={progress} sx={{ mb: 1 }} />
+          <BorderLinearProgress variant="determinate" value={progress} sx={{ mb: 1 }} />
         </Container>
-      </Box>
+      
       {/* Form Content */}
-      <Container maxWidth="md" sx={{ py: 4 }}>
+      <Container maxWidth="xl">
         {CurrentFormComponent && (
           <CurrentFormComponent
             data={formData[currentStep] || {}}
@@ -108,3 +140,5 @@ export const RegistrationFlow = ({ onBack }) => {
     </Box>
   );
 };
+
+export default RegistrationFlow

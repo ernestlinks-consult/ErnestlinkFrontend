@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@date-io/date-fns": "^3.2.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.2.5",
@@ -16,8 +17,10 @@
     "@mui/lab": "^7.0.0-beta.12",
     "@mui/material": "^7.1.0",
     "@mui/toolpad": "^0.1.51",
+    "@mui/x-date-pickers": "^8.5.2",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",
+    "date-fns": "^3.6.0",
     "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "postcss": "^8.5.3",

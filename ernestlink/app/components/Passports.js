@@ -50,7 +50,7 @@ const statusColors = {
   Rejected: "error",
 };
 
-export default function PassportApplications() {
+export default function PassportApplications({ onRegisterNew }) {
   // const [showFilters, setShowFilters] = useState(false);
   const [applicants, setApplicants] = useState(initialApplicants);
   const [open, setOpen] = useState(false);
@@ -135,7 +135,7 @@ export default function PassportApplications() {
             variant="outlined"
             startIcon={<Add />}
             component="a"
-            href = "/add-new-passport"
+            // href = "/register-passport"
             target="_blank"
             rel="noopener noreferrer"
             sx={{
@@ -149,6 +149,8 @@ export default function PassportApplications() {
                 color: "#0505AA",
               },
             }}
+            onClick={onRegisterNew}
+            // onClick={() => setSelectedMenu("register-passport")}
             // onClick={() => setOpen(true)}
             >
             Register New Passport
