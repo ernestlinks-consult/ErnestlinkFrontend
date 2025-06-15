@@ -22,7 +22,6 @@ import {
   CheckCircle,
 } from "@mui/icons-material";
 
-
 function DocumentUploadsForm({ data, onNext, onPrevious }) {
   const [uploads, setUploads] = useState({
     biometricBirthCertificate: data.biometricBirthCertificate || null,
@@ -43,25 +42,25 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
       key: "biometricBirthCertificate",
       title: "Biometric Birth Certificate",
       description: "Upload your biometric birth certificate (PDF, JPG, PNG)",
-      required: true,
+      // required: true,
     },
     {
       key: "passportPicture",
       title: "Passport Picture",
       description: "Upload your passport-sized photograph (JPG, PNG)",
-      required: true,
+      // required: true,
     },
     {
       key: "ghanaCardFront",
       title: "Ghana Card (Front)",
       description: "Upload the front side of your Ghana Card (PDF, JPG, PNG)",
-      required: true,
+      // required: true,
     },
     {
       key: "ghanaCardBack",
       title: "Ghana Card (Back)",
       description: "Upload the back side of your Ghana Card (PDF, JPG, PNG)",
-      required: true,
+      // required: true,
     },
   ];
 
@@ -137,7 +136,15 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
       }}
     >
       <CardHeader
-        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>Document Uploads</Typography>}
+        title={
+          <Typography
+            variant="h5"
+            className="mb-1 font-semibold"
+            sx={{ fontWeight: 600, color: "#0505AA" }}
+          >
+            Document Uploads
+          </Typography>
+        }
         subheader="Upload required documents in PDF, JPG, or PNG format (max 10MB each)."
       />
 
@@ -159,10 +166,10 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
                           {document.title}
                         </Typography>
                         {document.required && (
-                          <Chip label="Required" color="error" size="small"/>
+                          <Chip label="Required" color="error" size="small" />
                         )}
                         {isUploaded && (
-                          <CheckCircle fontSize="small" color="success"/>
+                          <CheckCircle fontSize="small" color="success" />
                         )}
                       </Box>
 
@@ -259,15 +266,16 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
                 variant="outlined"
                 onClick={onPrevious}
                 startIcon={<ArrowLeft />}
-                sx={{color: "#0505AA",
+                sx={{
+                  color: "#0505AA",
                   borderColor: "#0505AA",
                   textTransform: "none",
                   fontWeight: 400,
                   "&:hover": {
-                  bgcolor: "#0505AA",
-                  color: "#fff",
+                    bgcolor: "#0505AA",
+                    color: "#fff",
                   },
-              }}
+                }}
               >
                 Previous
               </Button>
@@ -275,7 +283,8 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
             <Button
               type="submit"
               variant="contained"
-              sx={{color: "#fff",
+              sx={{
+                color: "#fff",
                 textTransform: "none",
                 fontWeight: 400,
                 bgcolor: "#0505AA",
