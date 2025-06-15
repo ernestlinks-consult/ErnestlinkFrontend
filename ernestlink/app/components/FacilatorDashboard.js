@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRouter } from "react";
 import { FileText, CheckCircle, Clock, AlertCircle } from "lucide-react";
 import {
   Card,
@@ -11,6 +12,22 @@ import {
 } from "@mui/material";
 
 export default function FacilatorDashboard({ onRegisterNew }) {
+  const router = useRouter();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    const userData = Cookies.get("user");
+
+    if (!token || !userData) {
+      router.push("/adminlogin");
+    } else {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
+
+  if (!user) return null;
+
   return (
     <Container
       maxWidth="xl"
@@ -20,12 +37,14 @@ export default function FacilatorDashboard({ onRegisterNew }) {
         overflow: "auto",
         height: "80vh",
         pb: 5,
-      }}>
+      }}
+    >
       <Box sx={{ mb: 4, overflow: "auto" }}>
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold", color: "#1f2937", mb: 1 }}>
-          Welcome, John Facilitator
+          sx={{ fontWeight: "bold", color: "#1f2937", mb: 1 }}
+        >
+          Welcome, {user.name}
         </Typography>
         <Typography variant="body1" sx={{ color: "#6b7280" }}>
           Here's an overview of your passport applications
@@ -45,14 +64,16 @@ export default function FacilatorDashboard({ onRegisterNew }) {
             md: "repeat(3, 1fr)",
             lg: "repeat(4, 1fr)",
           },
-        }}>
+        }}
+      >
         <Grid item xs={12} md={6}>
           <Card
             sx={{
               borderLeft: "4px solid #1e3a8a",
               boxShadow:
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-            }}>
+            }}
+          >
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -64,18 +85,21 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                   alignItems: "center",
 
                   justifyContent: "space-between",
-                }}>
+                }}
+              >
                 <FileText size={24} color="#1e40af" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
+                >
                   Total Applications
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
+                >
                   3
                 </Typography>
               </Box>
@@ -89,7 +113,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
               borderLeft: "4px solid #059669",
               boxShadow:
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-            }}>
+            }}
+          >
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -100,18 +125,21 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <CheckCircle size={24} color="#059669" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
+                >
                   Approved
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
+                >
                   2
                 </Typography>
               </Box>
@@ -125,7 +153,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
               borderLeft: "4px solid #f59e0b",
               boxShadow:
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-            }}>
+            }}
+          >
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -136,18 +165,21 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <Clock size={24} color="#f59e0b" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
+                >
                   Pending
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
+                >
                   1
                 </Typography>
               </Box>
@@ -161,7 +193,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
               borderLeft: "4px solid #ef4444",
               boxShadow:
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-            }}>
+            }}
+          >
             <CardContent sx={{ p: 3, display: "flex", alignItems: "center" }}>
               <Box
                 sx={{
@@ -172,18 +205,21 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <AlertCircle size={24} color="#ef4444" />
               </Box>
               <Box>
                 <Typography
                   variant="body2"
-                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
+                  sx={{ color: "#6b7280", fontSize: "0.875rem" }}
+                >
                   Rejected
                 </Typography>
                 <Typography
                   variant="h3"
-                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}>
+                  sx={{ fontWeight: "bold", fontSize: "1.875rem" }}
+                >
                   0
                 </Typography>
               </Box>
@@ -205,7 +241,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
             sx={{
               boxShadow:
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-            }}>
+            }}
+          >
             <CardContent
               sx={{
                 p: 4,
@@ -213,7 +250,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
-              }}>
+              }}
+            >
               <Box
                 sx={{
                   backgroundColor: "#dbeafe",
@@ -224,7 +262,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                   alignItems: "center",
 
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <FileText size={24} color="#1e40af" />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
@@ -240,9 +279,10 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                 rel="noopener noreferrer"
                 onClick={onRegisterNew}
                 sx={{
-                fontWeight: 400,
-                bgcolor: "#0505AA",
-                }}>
+                  fontWeight: 400,
+                  bgcolor: "#0505AA",
+                }}
+              >
                 Register Passport
               </Button>
             </CardContent>
@@ -254,7 +294,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
             sx={{
               boxShadow:
                 "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-            }}>
+            }}
+          >
             <CardContent
               sx={{
                 p: 4,
@@ -262,7 +303,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
-              }}>
+              }}
+            >
               <Box
                 sx={{
                   backgroundColor: "#dbeafe",
@@ -273,7 +315,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
                   alignItems: "center",
 
                   justifyContent: "center",
-                }}>
+                }}
+              >
                 <Clock size={24} color="#1e40af" />
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
@@ -292,7 +335,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
 
                     backgroundColor: "rgba(0, 0, 0, 0.04)",
                   },
-                }}>
+                }}
+              >
                 View Applications
               </Button>
             </CardContent>
@@ -308,7 +352,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
           alignItems: "center",
 
           mb: 2,
-        }}>
+        }}
+      >
         <Typography variant="h5" sx={{ fontWeight: "bold", color: "#1f2937" }}>
           Recent Applications
         </Typography>
@@ -322,7 +367,8 @@ export default function FacilatorDashboard({ onRegisterNew }) {
 
               textDecoration: "underline",
             },
-          }}>
+          }}
+        >
           View All
         </Button>
       </Box>
@@ -389,26 +435,30 @@ function ApplicationCard({ name, id, date, status }) {
       sx={{
         boxShadow:
           "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-      }}>
+      }}
+    >
       <CardContent
         sx={{
           p: 3,
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-        }}>
+        }}
+      >
         <Box>
           <Typography variant="h6" sx={{ fontWeight: 600, color: "#1f2937" }}>
             {name}
           </Typography>
           <Typography
             variant="body2"
-            sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
+            sx={{ color: "#6b7280", fontSize: "0.875rem" }}
+          >
             ID: {id}
           </Typography>
           <Typography
             variant="body2"
-            sx={{ color: "#6b7280", fontSize: "0.875rem" }}>
+            sx={{ color: "#6b7280", fontSize: "0.875rem" }}
+          >
             Submitted on {date}
           </Typography>
         </Box>

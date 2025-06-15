@@ -50,14 +50,16 @@ export default function DashboardLayoutt({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-      }}>
+      }}
+    >
       <Box>
         <Toolbar
           sx={{
             justifyContent: "center",
             px: 2,
             py: 3,
-          }}>
+          }}
+        >
           <Box
             sx={{
               bgcolor: "#F8FAFC",
@@ -67,7 +69,8 @@ export default function DashboardLayoutt({
               alignItems: "center",
               justifyContent: "center",
               ml: -12,
-            }}>
+            }}
+          >
             <Image
               src="/images/elc_logo.png"
               alt="Logo"
@@ -137,7 +140,8 @@ export default function DashboardLayoutt({
                       borderRadius: "0 4px 4px 0",
                     },
                   },
-                }}>
+                }}
+              >
                 <ListItemIcon sx={{ minWidth: 32 }}>{icon}</ListItemIcon>
                 <ListItemText
                   primary={text}
@@ -172,8 +176,15 @@ export default function DashboardLayoutt({
             },
           }}
           onClick={() => {
-            alert("Logout clicked");
-          }}>
+            // Clear stored tokens and user data
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            localStorage.removeItem("user");
+
+            // Redirect to login page
+            window.location.href = "/adminlogin"; // or use router.push("/login") in Next.js
+          }}
+        >
           Logout
         </Button>
       </Box>
@@ -193,7 +204,8 @@ export default function DashboardLayoutt({
           ml: isMobile ? 0 : `${drawerWidth}px`,
           boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)",
           borderBottom: "1px solid #E5E7EB",
-        }}>
+        }}
+      >
         <Toolbar
           sx={{
             minHeight: {
@@ -203,14 +215,16 @@ export default function DashboardLayoutt({
             },
             justifyContent: "space-between",
             px: 3,
-          }}>
+          }}
+        >
           {isMobile && (
             <IconButton
               color="inherit"
               edge="start"
               onClick={handleDrawerToggle}
               sx={{ mr: 1 }}
-              aria-label="open drawer">
+              aria-label="open drawer"
+            >
               <MenuIcon />
             </IconButton>
           )}
@@ -225,7 +239,8 @@ export default function DashboardLayoutt({
                 sm: "20px",
                 md: "34px",
               },
-            }}>
+            }}
+          >
             {pageTitle}
           </Typography>
           <Box
@@ -237,7 +252,8 @@ export default function DashboardLayoutt({
                 xs: 0,
                 md: 4,
               },
-            }}>
+            }}
+          >
             <Avatar
               sx={{
                 bgcolor: "#0505AA",
@@ -251,7 +267,8 @@ export default function DashboardLayoutt({
                   sm: 50,
                   md: 59,
                 },
-              }}>
+              }}
+            >
               {userName.charAt(0)}
             </Avatar>
             <Box
@@ -261,7 +278,8 @@ export default function DashboardLayoutt({
                   xs: "none",
                   md: "block",
                 },
-              }}>
+              }}
+            >
               <Typography
                 variant="subtitle2"
                 sx={{
@@ -270,7 +288,8 @@ export default function DashboardLayoutt({
                     md: "14px",
                   },
                   color: "#0505AA",
-                }}>
+                }}
+              >
                 {userName}
               </Typography>
               <Typography
@@ -282,7 +301,8 @@ export default function DashboardLayoutt({
                   },
                   color: "#0505AA",
                   lineHeight: 1,
-                }}>
+                }}
+              >
                 {userRole}
               </Typography>
             </Box>
@@ -294,7 +314,8 @@ export default function DashboardLayoutt({
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="sidebar folders">
+        aria-label="sidebar folders"
+      >
         {/* Temporary drawer on mobile */}
         <Drawer
           variant="temporary"
@@ -312,7 +333,8 @@ export default function DashboardLayoutt({
               color: "#0505AA",
               height: "100vh",
             },
-          }}>
+          }}
+        >
           {drawer}
         </Drawer>
 
@@ -329,7 +351,8 @@ export default function DashboardLayoutt({
               height: "100vh",
             },
           }}
-          open>
+          open
+        >
           {drawer}
         </Drawer>
       </Box>
@@ -342,7 +365,8 @@ export default function DashboardLayoutt({
           p: 3,
           mt: "80px",
           width: { xs: "100%", sm: `calc(100% - ${drawerWidth}px)` },
-        }}>
+        }}
+      >
         {children}
       </Box>
     </Box>
