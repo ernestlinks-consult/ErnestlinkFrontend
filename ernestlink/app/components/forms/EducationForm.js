@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Divider,
   Typography,
   TextField,
   Grid,
@@ -129,7 +130,7 @@ export default function EducationForm({ data, onNext, onPrevious }) {
                 />
               </Grid>
             </Grid>
-
+            <Divider sx={{ my: 4 }} />
             <Box mt={4} display="flex" justifyContent="space-between">
               {onPrevious && (
                 <Button

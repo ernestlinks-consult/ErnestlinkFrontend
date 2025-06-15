@@ -189,7 +189,7 @@ export default function ResidentialInformationForm({
               />
             </Grid>
           </Grid>
-
+          <Divider sx={{ my: 4 }} />
           <Box mt={4} display="flex" justifyContent="space-between">
             {onPrevious && (
               <Button

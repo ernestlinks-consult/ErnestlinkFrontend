@@ -73,31 +73,20 @@ export const RegistrationFlow = ({ onBack }) => {
       title: "Residential Information",
       component: ResidentialInformationForm,
     },
-    { 
-      id: 5, 
-      title: "Education", 
-      component: EducationForm 
+    {
+      id: 5,
+      title: "Education",
+      component: EducationForm,
     },
     {
       id: 6,
       title: "Citizenship & Parental Info",
       component: ParentalInformationForm,
     },
-    { id: 7, 
-      title: "Guarantors", 
-      component: GuarantorsForm 
-    },
-    { id: 8, 
-      title: "Witness", 
-      component: WitnessForm 
-    },
-    { id: 9, 
-      title: "Document Uploads", 
-      component: DocumentUploadsForm 
-    },
-    { id: 10, 
-      title: "Review & Submit", 
-      component: ReviewSubmitForm },
+    { id: 7, title: "Guarantors", component: GuarantorsForm },
+    { id: 8, title: "Witness", component: WitnessForm },
+    { id: 9, title: "Document Uploads", component: DocumentUploadsForm },
+    { id: 10, title: "Review & Submit", component: ReviewSubmitForm },
   ];
 
   const currentStepData = steps.find((step) => step.id === currentStep);

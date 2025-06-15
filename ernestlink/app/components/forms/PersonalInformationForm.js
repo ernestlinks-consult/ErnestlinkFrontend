@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardContent,
   FormLabel,
+  Divider
 } from "@mui/material";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
@@ -358,7 +359,7 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           />
         </Grid>
       </Grid>
-
+      <Divider sx={{ my: 4 }} />
       <Box mt={4} display="flex" justifyContent="space-between">
         {onPrevious && (
           <Button
