@@ -20,7 +20,7 @@ const initialApplicants = [
     name: "Ken Smith",
     country: "Ghana",
     idNumber: "GH12345678",
-    submittedBy: "Keklem Facilitator",
+    // submittedBy: "Keklem Facilitator",
     date: "Apr 26, 2025",
     status: "Approved",
   },
@@ -29,7 +29,7 @@ const initialApplicants = [
     name: "Keren Johnson",
     country: "Nigeria",
     idNumber: "NG98765432",
-    submittedBy: "Keklem Facilitator",
+    // submittedBy: "Keklem Facilitator",
     date: "May 03, 2025",
     status: "Pending",
   },
@@ -38,7 +38,7 @@ const initialApplicants = [
     name: "Sarah Williams",
     country: "Uganda",
     idNumber: "KE45678901",
-    submittedBy: "John Facilitator",
+    // submittedBy: "John Facilitator",
     date: "May 08, 2025",
     status: "Rejected",
   },
@@ -240,12 +240,12 @@ export default function PassportApplications({ onRegisterNew }) {
                 fontWeight: "bold",
                 color: "#333",
               }}>
-              <Box width="20%">Applicant Name</Box>
-              <Box width="15%">ID Number</Box>
-              <Box width="20%">Submitted By</Box>
-              <Box width="15%">Date</Box>
-              <Box width="15%">Status</Box>
-              <Box width="15%" textAlign="center">
+              <Box width="25%">Applicant Name</Box>
+              <Box width="25%">ID Number</Box>
+              {/* <Box width="20%">Submitted By</Box> */}
+              <Box width="25%">Date</Box>
+              <Box width="25%">Status</Box>
+              <Box width="25%" textAlign="center">
                 Action
               </Box>
             </Box>
@@ -267,11 +267,11 @@ export default function PassportApplications({ onRegisterNew }) {
                     color: "#555",
                     "&:hover": { bgcolor: "#f9f9f9" },
                   }}>
-                  <Box width="20%">{a.name}</Box>
-                  <Box width="15%">{a.idNumber}</Box>
-                  <Box width="20%">{a.submittedBy}</Box>
-                  <Box width="15%">{a.date}</Box>
-                  <Box width="15%">
+                  <Box width="25%">{a.name}</Box>
+                  <Box width="25%">{a.idNumber}</Box>
+                  {/* <Box width="20%">{a.submittedBy}</Box> */}
+                  <Box width="25%">{a.date}</Box>
+                  <Box width="25%">
                     <Chip
                       label={
                         <Box display="flex" alignItems="center">
@@ -307,7 +307,7 @@ export default function PassportApplications({ onRegisterNew }) {
                       }}
                     />
                   </Box>
-                  <Box width="15%" textAlign="center">
+                  <Box width="25%" textAlign="center">
                     <Tooltip title="Delete">
                       <IconButton
                         onClick={() => handleDelete(a.id)}

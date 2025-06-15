@@ -57,7 +57,7 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
         subheader="Please provide information for two guarantors who are not your parents.
         These should be people who can vouch for your identity and character."
       />
-          <CardContent>
+      <CardContent>
       <form onSubmit={handleSubmit}>
         <Typography variant="h6" color="primary" gutterBottom>
           Guarantor 1
@@ -116,23 +116,24 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
               required
             />
           </Grid>
-        <Grid container spacing={2}>
-          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-            <TextField
-              label="Email"
-              type="email"
-              value={formData.guarantor1Email}
-              onChange={(e) => {
-                const textOnly = e.target.value.replace(/[0-9]/g, "");
-                setFormData((prev) => ({
-                  ...prev,
-                  guarantor1Email: textOnly,
-                }));
-              }}
-              fullWidth
-              required
-            />
-          </Grid>
+        </Grid>
+          <Grid container spacing={2}>
+            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+              <TextField
+                label="Email"
+                type="email"
+                value={formData.guarantor1Email}
+                onChange={(e) => {
+                  const textOnly = e.target.value.replace(/[0-9]/g, "");
+                  setFormData((prev) => ({
+                    ...prev,
+                    guarantor1Email: textOnly,
+                  }));
+                }}
+                fullWidth
+                required
+              />
+            </Grid>
 
           <Grid item size={{ xs: 12, md: 4 }} mt={2}>
             <TextField
@@ -164,8 +165,9 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
               required
             />
           </Grid>
-          <Divider sx={{ my: 2 }} />
-
+        </Grid>
+        <Divider sx={{ my: 2 }} />
+        
         <Typography variant="h6" color="secondary" gutterBottom>
           Guarantor 2
         </Typography>

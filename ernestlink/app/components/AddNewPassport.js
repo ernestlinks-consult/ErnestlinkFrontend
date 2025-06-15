@@ -59,7 +59,7 @@ export const RegistrationFlow = ({ onBack }) => {
       component: PassportApplicationForm,
     },
     {
-      id: 9,
+      id: 2,
       title: "Personal Information",
       component: PersonalInformationForm,
     },
@@ -73,17 +73,21 @@ export const RegistrationFlow = ({ onBack }) => {
       title: "Residential Information",
       component: ResidentialInformationForm,
     },
-    { id: 5, title: "Education", component: EducationForm },
+    { 
+      id: 5, 
+      title: "Education", 
+      component: EducationForm 
+    },
     {
       id: 6,
       title: "Citizenship & Parental Info",
       component: ParentalInformationForm,
     },
-    { id: 3, 
+    { id: 7, 
       title: "Guarantors", 
       component: GuarantorsForm 
     },
-    { id: 2, 
+    { id: 8, 
       title: "Witness", 
       component: WitnessForm 
     },
