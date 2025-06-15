@@ -11,8 +11,8 @@ import {
   Divider,
   Grid,
 } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { ArrowLeft, ArrowRight } from '@mui/icons-material';
+import { inputFieldStyle } from './FormStyle';
 
 export default function GuarantorsForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
@@ -39,6 +39,8 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
     onNext(formData);
   };
 
+  const isFormIncomplete = Object.values(formData).some(value => !value);
+
   return (
     <Box
       sx={{
@@ -50,162 +52,193 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
         bgcolor: "#F8F8FF",
       }}
     >
-      <Typography variant="h5">Guarantors (Not Parents)</Typography>
-      <Typography variant="body2">
-        Please provide information for two guarantors who are not your parents.
-        These should be people who can vouch for your identity and character.
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <Typography variant="h6" color="primary" gutterBottom>
-          Guarantor 1
-        </Typography>
-        <Grid container spacing={2} sx={{ width: "100%" }}>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <TextField
-              label="Full Name"
-              value={formData.guarantor1FullName}
-              onChange={handleChange("guarantor1FullName")}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <TextField
-              label="Occupation"
-              value={formData.guarantor1Occupation}
-              onChange={handleChange("guarantor1Occupation")}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <TextField
-              label="Telephone"
-              value={formData.guarantor1Telephone}
-              onChange={handleChange("guarantor1Telephone")}
-              fullWidth
-              required
-            />
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-            <TextField
-              label="Email"
-              type="email"
-              value={formData.guarantor1Email}
-              onChange={handleChange("guarantor1Email")}
-              fullWidth
-              required
-            />
+      <CardHeader
+        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>Guarantors (Not Parents)</Typography>}
+        subheader="Please provide information for two guarantors who are not your parents.
+        These should be people who can vouch for your identity and character."
+      />
+      <CardContent>
+        <form onSubmit={handleSubmit}>
+          <Typography variant="h6" color="#0505AA" gutterBottom>
+            Guarantor 1
+          </Typography>
+          <Grid container spacing={2} sx={{ width: "100%" }}>
+            <Grid item size={{ xs: 12, md: 4 }}>
+              <TextField
+                label="Full Name"
+                value={formData.guarantor1FullName}
+                onChange={handleChange("guarantor1FullName")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
+            <Grid item size={{ xs: 12, md: 4 }}>
+              <TextField
+                label="Occupation"
+                value={formData.guarantor1Occupation}
+                onChange={handleChange("guarantor1Occupation")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
+            <Grid item size={{ xs: 12, md: 4 }}>
+              <TextField
+                label="Telephone"
+                value={formData.guarantor1Telephone}
+                onChange={handleChange("guarantor1Telephone")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
           </Grid>
 
-          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-            <TextField
-              label="Residential Address"
-              value={formData.guarantor1ResidentialAddress}
-              onChange={handleChange("guarantor1ResidentialAddress")}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-            <TextField
-              label="Postal Address"
-              value={formData.guarantor1PostalAddress}
-              onChange={handleChange("guarantor1PostalAddress")}
-              fullWidth
-              required
-            />
-          </Grid>
-        </Grid>
-        <Divider sx={{ my: 4 }} />
+          <Grid container spacing={2}>
+            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+              <TextField
+                label="Email"
+                type="email"
+                value={formData.guarantor1Email}
+                onChange={handleChange("guarantor1Email")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
 
-        <Typography variant="h6" color="secondary" gutterBottom>
-          Guarantor 2
-        </Typography>
-        <Grid container spacing={2} sx={{ width: "100%" }}>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <TextField
-              label="Full Name"
-              value={formData.guarantor2FullName}
-              onChange={handleChange("guarantor2FullName")}
-              fullWidth
-              required
-            />
+            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+              <TextField
+                label="Residential Address"
+                value={formData.guarantor1ResidentialAddress}
+                onChange={handleChange("guarantor1ResidentialAddress")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
+            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+              <TextField
+                label="Postal Address"
+                value={formData.guarantor1PostalAddress}
+                onChange={handleChange("guarantor1PostalAddress")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
           </Grid>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <TextField
-              label="Occupation"
-              value={formData.guarantor2Occupation}
-              onChange={handleChange("guarantor2Occupation")}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 4 }}>
-            <TextField
-              label="Telephone"
-              value={formData.guarantor2Telephone}
-              onChange={handleChange("guarantor2Telephone")}
-              fullWidth
-              required
-            />
-          </Grid>
-        </Grid>
+          <Divider sx={{ my: 2 }} />
 
-        <Grid container spacing={2}>
-          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-            <TextField
-              label="Email"
-              type="email"
-              value={formData.guarantor2Email}
-              onChange={handleChange("guarantor2Email")}
-              fullWidth
-              required
-            />
+          <Typography variant="h6" sx={{color:"#0505AA"}} gutterBottom>
+            Guarantor 2
+          </Typography>
+          <Grid container spacing={2} sx={{ width: "100%" }}>
+            <Grid item size={{ xs: 12, md: 4 }}>
+              <TextField
+                label="Full Name"
+                value={formData.guarantor2FullName}
+                onChange={handleChange("guarantor2FullName")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
+            <Grid item size={{ xs: 12, md: 4 }}>
+              <TextField
+                label="Occupation"
+                value={formData.guarantor2Occupation}
+                onChange={handleChange("guarantor2Occupation")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
+            <Grid item size={{ xs: 12, md: 4 }}>
+              <TextField
+                label="Telephone"
+                value={formData.guarantor2Telephone}
+                onChange={handleChange("guarantor2Telephone")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
           </Grid>
 
-          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-            <TextField
-              label="Residential Address"
-              value={formData.guarantor2ResidentialAddress}
-              onChange={handleChange("guarantor2ResidentialAddress")}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-            <TextField
-              label="Postal Address"
-              value={formData.guarantor2PostalAddress}
-              onChange={handleChange("guarantor2PostalAddress")}
-              fullWidth
-              required
-            />
-          </Grid>
-        </Grid>
+          <Grid container spacing={2}>
+            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+              <TextField
+                label="Email"
+                type="email"
+                value={formData.guarantor2Email}
+                onChange={handleChange("guarantor2Email")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
 
-        <CardActions sx={{ justifyContent: "space-between", mt: 4 }}>
-          {onPrevious && (
+            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+              <TextField
+                label="Residential Address"
+                value={formData.guarantor2ResidentialAddress}
+                onChange={handleChange("guarantor2ResidentialAddress")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
+            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+              <TextField
+                label="Postal Address"
+                value={formData.guarantor2PostalAddress}
+                onChange={handleChange("guarantor2PostalAddress")}
+                fullWidth
+                sx={ inputFieldStyle }
+                required
+              />
+            </Grid>
+          </Grid>
+
+          <Divider sx={{ my: 4 }} />
+
+          <CardActions sx={{ justifyContent: "space-between", mt: 4 }}>
+            {onPrevious && (
+              <Button
+                variant="outlined"
+                startIcon={<ArrowLeft />}
+                onClick={onPrevious}
+                sx={{color: "#0505AA",
+                    borderColor: "#0505AA",
+                    textTransform: "none",
+                    fontWeight: 400,
+                    "&:hover": {
+                    bgcolor: "#0505AA",
+                    color: "#fff",
+                    },
+                }}
+              >
+                Previous
+              </Button>
+            )}
             <Button
-              variant="outlined"
-              startIcon={<ArrowBackIcon />}
-              onClick={onPrevious}
+              type="submit"
+              variant="contained"
+              endIcon={<ArrowRight />}
+              disabled={isFormIncomplete}
+              sx={{color: "#fff",
+                  textTransform: "none",
+                  fontWeight: 400,
+                  bgcolor: "#0505AA",
+                }}
             >
-              Previous
+              Next
             </Button>
-          )}
-          <Button
-            type="submit"
-            variant="contained"
-            endIcon={<ArrowForwardIcon />}
-          >
-            Next
-          </Button>
-        </CardActions>
-      </form>
+          </CardActions>
+        </form>
+      </CardContent>
     </Box>
   );
 }
