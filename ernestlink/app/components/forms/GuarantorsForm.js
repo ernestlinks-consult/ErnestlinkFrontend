@@ -64,7 +64,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Full Name"
               value={formData.guarantor1FullName}
-              onChange={handleChange("guarantor1FullName")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, ""); // remove numbers
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1FullName: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -73,7 +79,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Occupation"
               value={formData.guarantor1Occupation}
-              onChange={handleChange("guarantor1Occupation")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, ""); // remove numbers
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1Occupation: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -82,7 +94,21 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Telephone"
               value={formData.guarantor1Telephone}
-              onChange={handleChange("guarantor1Telephone")}
+              onChange={(e) => {
+                const onlyDigits = e.target.value
+                  .replace(/\D/g, "")
+                  .slice(0, 10); // allow only numbers, max 10
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1Telephone: onlyDigits,
+                }));
+              }}
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                minLength: 10,
+                maxLength: 10,
+              }}
               fullWidth
               required
             />
@@ -95,7 +121,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
               label="Email"
               type="email"
               value={formData.guarantor1Email}
-              onChange={handleChange("guarantor1Email")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1Email: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -105,7 +137,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Residential Address"
               value={formData.guarantor1ResidentialAddress}
-              onChange={handleChange("guarantor1ResidentialAddress")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1ResidentialAddress: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -114,7 +152,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Postal Address"
               value={formData.guarantor1PostalAddress}
-              onChange={handleChange("guarantor1PostalAddress")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1PostalAddress: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -130,7 +174,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Full Name"
               value={formData.guarantor2FullName}
-              onChange={handleChange("guarantor2FullName")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2FullName: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -139,7 +189,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Occupation"
               value={formData.guarantor2Occupation}
-              onChange={handleChange("guarantor2Occupation")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2Occupation: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -148,7 +204,21 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Telephone"
               value={formData.guarantor2Telephone}
-              onChange={handleChange("guarantor2Telephone")}
+              onChange={(e) => {
+                const onlyDigits = e.target.value
+                  .replace(/\D/g, "")
+                  .slice(0, 10); // allow only numbers, max 10
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2Telephone: onlyDigits,
+                }));
+              }}
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                minLength: 10,
+                maxLength: 10,
+              }}
               fullWidth
               required
             />
@@ -161,7 +231,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
               label="Email"
               type="email"
               value={formData.guarantor2Email}
-              onChange={handleChange("guarantor2Email")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2Email: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -171,7 +247,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Residential Address"
               value={formData.guarantor2ResidentialAddress}
-              onChange={handleChange("guarantor2ResidentialAddress")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2ResidentialAddress: textOnly,
+                }));
+              }}
               fullWidth
               required
             />
@@ -180,7 +262,13 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
             <TextField
               label="Postal Address"
               value={formData.guarantor2PostalAddress}
-              onChange={handleChange("guarantor2PostalAddress")}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2PostalAddress: textOnly,
+                }));
+              }}
               fullWidth
               required
             />

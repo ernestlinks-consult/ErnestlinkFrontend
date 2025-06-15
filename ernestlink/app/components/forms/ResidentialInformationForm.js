@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -9,19 +9,23 @@ import {
   CardContent,
   CardHeader,
   Divider,
-} from '@mui/material';
-import { ArrowLeft, ArrowRight } from '@mui/icons-material';
+} from "@mui/material";
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
-export default function ResidentialInformationForm({ data, onNext, onPrevious }) {
+export default function ResidentialInformationForm({
+  data,
+  onNext,
+  onPrevious,
+}) {
   const [formData, setFormData] = useState({
-    houseNumber: data.houseNumber || '',
-    streetName: data.streetName || '',
-    digitalAddress: data.digitalAddress || '',
-    postalAddress: data.postalAddress || '',
-    suburb: data.suburb || '',
-    cityOfResidence: data.cityOfResidence || '',
-    countryOfResidence: data.countryOfResidence || '',
-    postalZipCode: data.postalZipCode || '',
+    houseNumber: data.houseNumber || "",
+    streetName: data.streetName || "",
+    digitalAddress: data.digitalAddress || "",
+    postalAddress: data.postalAddress || "",
+    suburb: data.suburb || "",
+    cityOfResidence: data.cityOfResidence || "",
+    countryOfResidence: data.countryOfResidence || "",
+    postalZipCode: data.postalZipCode || "",
   });
 
   const handleSubmit = (e) => {
@@ -31,21 +35,35 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
 
   return (
     <Box
-          sx={{
-            flex: 1,
-            minHeight: { xs: "30px", sm: "10vh" },
-            p: 3,
-            border: "2px solid #007BFF30",
-            borderRadius: 2,
-            bgcolor: "#F8F8FF",
-          }}>
+      sx={{
+        flex: 1,
+        minHeight: { xs: "30px", sm: "10vh" },
+        p: 3,
+        border: "2px solid #007BFF30",
+        borderRadius: 2,
+        bgcolor: "#F8F8FF",
+      }}
+    >
       <CardHeader
-        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>Residential Information</Typography>}
+        title={
+          <Typography
+            variant="h5"
+            className="mb-1 font-semibold"
+            sx={{ fontWeight: 600, color: "#0505AA" }}
+          >
+            Residential Information
+          </Typography>
+        }
         subheader="Please provide your current residential address details"
       />
       {/* <Divider /> */}
       <CardContent>
-        <Box component="form" onSubmit={handleSubmit} noValidate autoComplete="off">
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="off"
+        >
           <Grid container spacing={2} sx={{ mb: 3 }}>
             <Grid size={6}>
               <TextField
@@ -54,7 +72,10 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 required
                 value={formData.houseNumber}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, houseNumber: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    houseNumber: e.target.value,
+                  }))
                 }
               />
             </Grid>
@@ -66,7 +87,10 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 required
                 value={formData.streetName}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, streetName: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    streetName: e.target.value,
+                  }))
                 }
               />
             </Grid>
@@ -78,7 +102,10 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 required
                 value={formData.digitalAddress}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, digitalAddress: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    digitalAddress: e.target.value,
+                  }))
                 }
               />
             </Grid>
@@ -90,7 +117,10 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 required
                 value={formData.postalAddress}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, postalAddress: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    postalAddress: e.target.value,
+                  }))
                 }
               />
             </Grid>
@@ -100,9 +130,14 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 label="Suburb"
                 fullWidth
                 value={formData.suburb}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, suburb: e.target.value }))
-                }
+                onChange={(e) => {
+                  const value = e.target.value || "";
+                  const textOnly = e.target.value.replace(/[0-9]/g, "");
+                  setFormData((prev) => ({
+                    ...prev,
+                    suburb: textOnly,
+                  }));
+                }}
               />
             </Grid>
 
@@ -112,9 +147,14 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 fullWidth
                 required
                 value={formData.cityOfResidence}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, cityOfResidence: e.target.value }))
-                }
+                onChange={(e) => {
+                  const value = e.target.value || "";
+                  const textOnly = e.target.value.replace(/[0-9]/g, "");
+                  setFormData((prev) => ({
+                    ...prev,
+                    cityOfResidence: textOnly,
+                  }));
+                }}
               />
             </Grid>
 
@@ -124,9 +164,14 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 fullWidth
                 required
                 value={formData.countryOfResidence}
-                onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, countryOfResidence: e.target.value }))
-                }
+                onChange={(e) => {
+                  const value = e.target.value || "";
+                  const textOnly = e.target.value.replace(/[0-9]/g, "");
+                  setFormData((prev) => ({
+                    ...prev,
+                    countryOfResidence: textOnly,
+                  }));
+                }}
               />
             </Grid>
 
@@ -136,7 +181,10 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
                 fullWidth
                 value={formData.postalZipCode}
                 onChange={(e) =>
-                  setFormData((prev) => ({ ...prev, postalZipCode: e.target.value }))
+                  setFormData((prev) => ({
+                    ...prev,
+                    postalZipCode: e.target.value,
+                  }))
                 }
               />
             </Grid>
@@ -144,15 +192,21 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
 
           <Box mt={4} display="flex" justifyContent="space-between">
             {onPrevious && (
-              <Button variant="outlined" sx={{color: "#0505AA",
-                borderColor: "#0505AA",
-                textTransform: "none",
-                fontWeight: 400,
-                "&:hover": {
-                  bgcolor: "#0505AA",
-                  color: "#fff",
-                },
-              }} startIcon={<ArrowLeft />} onClick={onPrevious}>
+              <Button
+                variant="outlined"
+                sx={{
+                  color: "#0505AA",
+                  borderColor: "#0505AA",
+                  textTransform: "none",
+                  fontWeight: 400,
+                  "&:hover": {
+                    bgcolor: "#0505AA",
+                    color: "#fff",
+                  },
+                }}
+                startIcon={<ArrowLeft />}
+                onClick={onPrevious}
+              >
                 Previous
               </Button>
             )}
@@ -183,4 +237,4 @@ export default function ResidentialInformationForm({ data, onNext, onPrevious })
       </CardContent>
     </Box>
   );
-};
+}
