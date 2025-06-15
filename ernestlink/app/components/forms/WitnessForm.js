@@ -15,29 +15,20 @@ import {
   Alert,
   AlertTitle,
 } from "@mui/material";
-import { ArrowBack, ArrowForward, WarningAmber } from "@mui/icons-material";
+import { ArrowLeft, ArrowRight, WarningAmber } from "@mui/icons-material";
 
 function WitnessForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
     witnessFullName: data.witnessFullName || "AKUOKO ERNEST",
     witnessOccupation: data.witnessOccupation || "EDUCATIONAL CONSULTANT",
     witnessTelephone: data.witnessTelephone || "0554223970",
-    witnessEmail: data.witnessEmail || "",
+    witnessEmail: data.witnessEmail || "consult.ernestlinks@gmail.com",
     witnessResidentialAddress: data.witnessResidentialAddress || "KOTEI",
-    witnessPostalAddress: data.witnessPostalAddress || "",
-    witnessIdOrPassportNo: data.witnessIdOrPassportNo || "",
+    witnessPostalAddress: data.witnessPostalAddress || "AO-K508-8556",
+    witnessIdOrPassportNo: data.witnessIdOrPassportNo || "G2809151",
     witnessPlaceOfIssue: data.witnessPlaceOfIssue || "ACCRA",
-    witnessDateOfIssue: data.witnessDateOfIssue || "02/12/2023",
+    witnessDateOfIssue: data.witnessDateOfIssue || "2023-12-02",
   });
-
-  const validOccupations = [
-    "Pastor",
-    "Lawyer",
-    "Doctor",
-    "Engineer",
-    "Managing Director",
-    "Head Master",
-  ];
 
   const handleChange = (field) => (event) => {
     setFormData((prev) => ({ ...prev, [field]: event.target.value }));
@@ -47,6 +38,8 @@ function WitnessForm({ data, onNext, onPrevious }) {
     e.preventDefault();
     onNext(formData);
   };
+
+  const isFormIncomplete = Object.values(formData).some(value => !value);
 
   return (
     <Box
@@ -61,25 +54,21 @@ function WitnessForm({ data, onNext, onPrevious }) {
     >
       <CardHeader
         title={
-          <Typography variant="h5">
+          <Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>
             Witness (To be filled by the Admin)
           </Typography>
         }
+        subheader="This section should be completed by an authorized administrator. The
+        witness must have a valid stamp and be one of the qualified
+        professionals listed below."
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
-          This section should be completed by an authorized administrator. The
-          witness must have a valid stamp and be one of the qualified
-          professionals listed below.
-        </Typography>
-
         <Alert severity="warning" sx={{ mb: 3 }} icon={<WarningAmber />}>
           <AlertTitle>Important</AlertTitle>
           The witness must be one of the following: Pastor, Lawyer, Doctor,
           Engineer, Managing Director, or Head Master, and must have a valid
           official stamp.
         </Alert>
-
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item size={{ xs: 12, md: 6 }}>
@@ -89,6 +78,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 label="Full Name"
                 value={formData.witnessFullName}
                 onChange={handleChange("witnessFullName")}
+                disabled
               />
             </Grid>
 
@@ -99,12 +89,11 @@ function WitnessForm({ data, onNext, onPrevious }) {
                   value={formData.witnessOccupation}
                   onChange={handleChange("witnessOccupation")}
                   label="Occupation"
+                  disabled
                 >
-                  {validOccupations.map((occupation) => (
-                    <MenuItem key={occupation} value={occupation}>
-                      {occupation}
+                    <MenuItem key={formData.witnessOccupation} value={formData.witnessOccupation}>
+                      {formData.witnessOccupation}
                     </MenuItem>
-                  ))}
                 </Select>
               </FormControl>
             </Grid>
@@ -117,6 +106,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 type="tel"
                 value={formData.witnessTelephone}
                 onChange={handleChange("witnessTelephone")}
+                disabled
               />
             </Grid>
 
@@ -128,6 +118,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 type="email"
                 value={formData.witnessEmail}
                 onChange={handleChange("witnessEmail")}
+                disabled
               />
             </Grid>
 
@@ -138,6 +129,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 label="Residential Address"
                 value={formData.witnessResidentialAddress}
                 onChange={handleChange("witnessResidentialAddress")}
+                disabled
               />
             </Grid>
 
@@ -148,6 +140,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 label="Postal Address"
                 value={formData.witnessPostalAddress}
                 onChange={handleChange("witnessPostalAddress")}
+                disabled
               />
             </Grid>
 
@@ -158,6 +151,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 label="ID or Passport Number"
                 value={formData.witnessIdOrPassportNo}
                 onChange={handleChange("witnessIdOrPassportNo")}
+                disabled
               />
             </Grid>
 
@@ -168,6 +162,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 label="Place of Issue"
                 value={formData.witnessPlaceOfIssue}
                 onChange={handleChange("witnessPlaceOfIssue")}
+                disabled
               />
             </Grid>
 
@@ -177,9 +172,10 @@ function WitnessForm({ data, onNext, onPrevious }) {
                 required
                 label="Date of Issue"
                 type="date"
-                InputLabelProps={{ shrink: true }}
+                // InputLabelProps={{ shrink: true }}
                 value={formData.witnessDateOfIssue}
                 onChange={handleChange("witnessDateOfIssue")}
+                disabled
               />
             </Grid>
           </Grid>
@@ -188,8 +184,17 @@ function WitnessForm({ data, onNext, onPrevious }) {
             {onPrevious && (
               <Button
                 variant="outlined"
-                startIcon={<ArrowBack />}
+                startIcon={<ArrowLeft />}
                 onClick={onPrevious}
+                sx={{color: "#0505AA",
+                  borderColor: "#0505AA",
+                  textTransform: "none",
+                  fontWeight: 400,
+                  "&:hover": {
+                  bgcolor: "#0505AA",
+                  color: "#fff",
+                  },
+                }}
               >
                 Previous
               </Button>
@@ -197,13 +202,13 @@ function WitnessForm({ data, onNext, onPrevious }) {
             <Button
               type="submit"
               variant="contained"
-              endIcon={<ArrowForward />}
-              disabled={
-                !formData.witnessFullName ||
-                !formData.witnessOccupation ||
-                !formData.witnessTelephone ||
-                !formData.witnessEmail
-              }
+              endIcon={<ArrowRight />}
+              sx={{color: "#fff",
+                textTransform: "none",
+                fontWeight: 400,
+                bgcolor: "#0505AA",
+              }}
+              disabled={isFormIncomplete}
             >
               Next
             </Button>

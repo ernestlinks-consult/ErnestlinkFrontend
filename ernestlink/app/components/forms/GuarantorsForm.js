@@ -11,8 +11,8 @@ import {
   Divider,
   Grid,
 } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { ArrowLeft, ArrowRight } from '@mui/icons-material';
+import { inputFieldStyle } from './FormStyle';
 
 export default function GuarantorsForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
@@ -39,6 +39,8 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
     onNext(formData);
   };
 
+  const isFormIncomplete = Object.values(formData).some(value => !value);
+
   return (
     <Box
       sx={{
@@ -50,11 +52,12 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
         bgcolor: "#F8F8FF",
       }}
     >
-      <Typography variant="h5">Guarantors (Not Parents)</Typography>
-      <Typography variant="body2">
-        Please provide information for two guarantors who are not your parents.
-        These should be people who can vouch for your identity and character.
-      </Typography>
+      <CardHeader
+        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>Guarantors (Not Parents)</Typography>}
+        subheader="Please provide information for two guarantors who are not your parents.
+        These should be people who can vouch for your identity and character."
+      />
+          <CardContent>
       <form onSubmit={handleSubmit}>
         <Typography variant="h6" color="primary" gutterBottom>
           Guarantor 1
@@ -113,8 +116,6 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
               required
             />
           </Grid>
-        </Grid>
-
         <Grid container spacing={2}>
           <Grid item size={{ xs: 12, md: 4 }} mt={2}>
             <TextField
@@ -163,8 +164,7 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
               required
             />
           </Grid>
-        </Grid>
-        <Divider sx={{ my: 4 }} />
+          <Divider sx={{ my: 2 }} />
 
         <Typography variant="h6" color="secondary" gutterBottom>
           Guarantor 2
@@ -275,25 +275,43 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
           </Grid>
         </Grid>
 
-        <CardActions sx={{ justifyContent: "space-between", mt: 4 }}>
-          {onPrevious && (
+          <Divider sx={{ my: 4 }} />
+
+          <CardActions sx={{ justifyContent: "space-between", mt: 4 }}>
+            {onPrevious && (
+              <Button
+                variant="outlined"
+                startIcon={<ArrowLeft />}
+                onClick={onPrevious}
+                sx={{color: "#0505AA",
+                    borderColor: "#0505AA",
+                    textTransform: "none",
+                    fontWeight: 400,
+                    "&:hover": {
+                    bgcolor: "#0505AA",
+                    color: "#fff",
+                    },
+                }}
+              >
+                Previous
+              </Button>
+            )}
             <Button
-              variant="outlined"
-              startIcon={<ArrowBackIcon />}
-              onClick={onPrevious}
+              type="submit"
+              variant="contained"
+              endIcon={<ArrowRight />}
+              disabled={isFormIncomplete}
+              sx={{color: "#fff",
+                  textTransform: "none",
+                  fontWeight: 400,
+                  bgcolor: "#0505AA",
+                }}
             >
-              Previous
+              Next
             </Button>
-          )}
-          <Button
-            type="submit"
-            variant="contained"
-            endIcon={<ArrowForwardIcon />}
-          >
-            Next
-          </Button>
-        </CardActions>
-      </form>
+          </CardActions>
+        </form>
+      </CardContent>
     </Box>
   );
 }

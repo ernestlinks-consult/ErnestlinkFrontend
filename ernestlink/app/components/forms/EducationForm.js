@@ -27,6 +27,8 @@ export default function EducationForm({ data, onNext, onPrevious }) {
     onNext(formData);
   };
 
+  const isFormIncomplete = Object.values(formData).some(value => !value);
+
   return (
     <Box
       sx={{
@@ -158,12 +160,7 @@ export default function EducationForm({ data, onNext, onPrevious }) {
                   bgcolor: "#0505AA",
                 }}
                 endIcon={<ArrowRight />}
-                disabled={
-                  !formData.institutionName ||
-                  !formData.periodFrom ||
-                  !formData.periodTo ||
-                  !formData.schoolPostalAddress
-                }
+                disabled={isFormIncomplete}
               >
                 Next
               </Button>

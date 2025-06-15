@@ -17,10 +17,11 @@ import {
   CloudUpload,
   InsertDriveFile,
   Delete,
-  ArrowBack,
-  ArrowForward,
+  ArrowLeft,
+  ArrowRight,
   CheckCircle,
 } from "@mui/icons-material";
+
 
 function DocumentUploadsForm({ data, onNext, onPrevious }) {
   const [uploads, setUploads] = useState({
@@ -136,7 +137,7 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
       }}
     >
       <CardHeader
-        title={<Typography variant="h5">Document Uploads</Typography>}
+        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>Document Uploads</Typography>}
         subheader="Upload required documents in PDF, JPG, or PNG format (max 10MB each)."
       />
 
@@ -158,10 +159,10 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
                           {document.title}
                         </Typography>
                         {document.required && (
-                          <Chip label="Required" color="error" size="small" />
+                          <Chip label="Required" color="error" size="small"/>
                         )}
                         {isUploaded && (
-                          <CheckCircle fontSize="small" color="success" />
+                          <CheckCircle fontSize="small" color="success"/>
                         )}
                       </Box>
 
@@ -204,14 +205,14 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
                           borderRadius={2}
                         >
                           <Box display="flex" alignItems="center" gap={2}>
-                            <InsertDriveFile color="success" />
+                            <InsertDriveFile />
                             <Box>
                               <Typography variant="body2">
                                 {uploadedFile.name}
                               </Typography>
                               <Typography
                                 variant="caption"
-                                color="text.secondary"
+                                // color="#0505AA"
                               >
                                 {formatFileSize(uploadedFile.size)} •{" "}
                                 {uploadedFile.type
@@ -223,7 +224,12 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
                           <Tooltip title="Remove">
                             <IconButton
                               onClick={() => removeFile(document.key)}
-                              color="error"
+                              sx={{
+                                color: "#FF5C5C",
+                                "&:hover": {
+                                  color: "red",
+                                },
+                              }}
                             >
                               <Delete fontSize="small" />
                             </IconButton>
@@ -252,7 +258,16 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
               <Button
                 variant="outlined"
                 onClick={onPrevious}
-                startIcon={<ArrowBack />}
+                startIcon={<ArrowLeft />}
+                sx={{color: "#0505AA",
+                  borderColor: "#0505AA",
+                  textTransform: "none",
+                  fontWeight: 400,
+                  "&:hover": {
+                  bgcolor: "#0505AA",
+                  color: "#fff",
+                  },
+              }}
               >
                 Previous
               </Button>
@@ -260,7 +275,12 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
             <Button
               type="submit"
               variant="contained"
-              endIcon={<ArrowForward />}
+              sx={{color: "#fff",
+                textTransform: "none",
+                fontWeight: 400,
+                bgcolor: "#0505AA",
+              }}
+              endIcon={<ArrowRight />}
               disabled={!allRequiredUploaded}
             >
               Next

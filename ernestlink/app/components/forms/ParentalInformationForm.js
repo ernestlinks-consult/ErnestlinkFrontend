@@ -15,7 +15,8 @@ import {
   FormControlLabel,
   Grid,
 } from "@mui/material";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import { ArrowLeft, ArrowRight } from '@mui/icons-material';
+import { inputFieldStyle } from './FormStyle';
 
 function ParentalInformationForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
@@ -54,9 +55,11 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
     onNext(formData);
   };
 
+  const isFormIncomplete = Object.values(formData).some(value => !value);
+
   const renderSection = (title, prefix) => (
     <Box sx={{ mb: 4 }}>
-      <Typography variant="h6" color="green" gutterBottom>
+      <Typography variant="h6" color="#0505AA" gutterBottom>
         {title}
       </Typography>
       <Grid container spacing={2}>
@@ -77,14 +80,33 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
         </Grid>
         <Grid item size={{ xs: 12, sm: 6 }}>
           <FormControl component="fieldset">
-            <FormLabel component="legend">Living</FormLabel>
+            <FormLabel 
+              component="legend" 
+              sx={{
+                color: '#8d6e63', 
+                '&.Mui-focused': {
+                  color: '#0505AA', 
+                },
+              }}>
+                Living
+              </FormLabel>
             <RadioGroup
               row
               value={formData[`${prefix}Living`]}
               onChange={handleChange(`${prefix}Living`)}
             >
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
+              <FormControlLabel value="yes" control={
+                <Radio 
+                  sx={{ 
+                    color: "#7070D8", 
+                    '&.Mui-checked': { color: "#4040C0" } 
+                  }} />} label="Yes" />
+              <FormControlLabel value="no" control={
+                <Radio 
+                  sx={{ 
+                    color: "#7070D8", 
+                    '&.Mui-checked': { color: "#4040C0" } 
+                  }} />} label="No" />
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -117,6 +139,7 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             type="email"
             value={formData[`${prefix}Email`]}
             onChange={handleChange(`${prefix}Email`)}
+            sx={ inputFieldStyle }
           />
         </Grid>
         <Grid item size={{ xs: 12, sm: 6 }}>
@@ -155,6 +178,7 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             label="Residential Address"
             value={formData[`${prefix}ResidentialAddress`]}
             onChange={handleChange(`${prefix}ResidentialAddress`)}
+            sx={ inputFieldStyle }
           />
         </Grid>
         <Grid item size={{ xs: 12, sm: 6 }}>
@@ -163,6 +187,7 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             label="Postal Address"
             value={formData[`${prefix}PostalAddress`]}
             onChange={handleChange(`${prefix}PostalAddress`)}
+            sx={ inputFieldStyle }
           />
         </Grid>
       </Grid>
@@ -180,22 +205,33 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
         bgcolor: "#F8F8FF",
       }}
     >
-      <CardHeader title="Citizenship & Parental Information" />
+      <CardHeader
+        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>Citizenship & Parental Information</Typography>}
+        subheader="Please provide information about your parents and one grandparent"
+      />
       <CardContent>
-        <Typography variant="body1" gutterBottom>
-          Please provide information about your parents and one grandparent
-        </Typography>
         <form onSubmit={handleSubmit}>
           {renderSection("Mother's Information", "mother")}
           {renderSection("Father's Information", "father")}
           {renderSection("Grandparent's Information", "grandparent")}
+
+          <Divider sx={{ my: 4 }} />
 
           <Box display="flex" justifyContent="space-between" mt={4}>
             {onPrevious && (
               <Button
                 variant="outlined"
                 onClick={onPrevious}
-                startIcon={<ArrowBack />}
+                sx={{color: "#0505AA",
+                  borderColor: "#0505AA",
+                  textTransform: "none",
+                  fontWeight: 400,
+                  "&:hover": {
+                  bgcolor: "#0505AA",
+                  color: "#fff",
+                  },
+                }}
+                startIcon={<ArrowLeft />}
               >
                 Previous
               </Button>
@@ -203,7 +239,13 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             <Button
               type="submit"
               variant="contained"
-              endIcon={<ArrowForward />}
+              sx={{color: "#fff",
+                textTransform: "none",
+                fontWeight: 400,
+                bgcolor: "#0505AA",
+              }}
+              endIcon={<ArrowRight />}
+              disabled={isFormIncomplete}
             >
               Next
             </Button>
