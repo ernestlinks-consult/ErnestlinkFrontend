@@ -19,15 +19,15 @@ import { ArrowBack, ArrowForward, WarningAmber } from "@mui/icons-material";
 
 function WitnessForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
-    witnessFullName: data.witnessFullName || "",
-    witnessOccupation: data.witnessOccupation || "",
-    witnessTelephone: data.witnessTelephone || "",
+    witnessFullName: data.witnessFullName || "AKUOKO ERNEST",
+    witnessOccupation: data.witnessOccupation || "EDUCATIONAL CONSULTANT",
+    witnessTelephone: data.witnessTelephone || "0554223970",
     witnessEmail: data.witnessEmail || "",
-    witnessResidentialAddress: data.witnessResidentialAddress || "",
+    witnessResidentialAddress: data.witnessResidentialAddress || "KOTEI",
     witnessPostalAddress: data.witnessPostalAddress || "",
     witnessIdOrPassportNo: data.witnessIdOrPassportNo || "",
-    witnessPlaceOfIssue: data.witnessPlaceOfIssue || "",
-    witnessDateOfIssue: data.witnessDateOfIssue || "",
+    witnessPlaceOfIssue: data.witnessPlaceOfIssue || "ACCRA",
+    witnessDateOfIssue: data.witnessDateOfIssue || "02/12/2023",
   });
 
   const validOccupations = [
