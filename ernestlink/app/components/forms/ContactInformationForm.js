@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
   Button,
   Box,
@@ -11,13 +11,23 @@ import {
 } from '@mui/material';
 import { ArrowLeft, ArrowRight } from '@mui/icons-material';
 
+
 export default function ContactInformationForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
-    nationalIdNumber: data?.nationalIdNumber || '',
-    ssnitNumber: data?.ssnitNumber || '',
-    telephoneNumber: data?.telephoneNumber || '',
-    emailAddress: data?.emailAddress || '',
+    houseNumber: data.houseNumber || "",
+    streetName: data.streetName || "",
+    digitalAddress: data.digitalAddress || "",
+    postalAddress: data.postalAddress || "",
+    suburb: data.suburb || "",
+    cityOfResidence: data.cityOfResidence || "",
+    countryOfResidence: data.countryOfResidence || "",
+    postalZipCode: data.postalZipCode || "",
   });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

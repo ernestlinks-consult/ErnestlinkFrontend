@@ -124,6 +124,7 @@ input {
     flex-direction: column;
     gap: 12px;
   }
+
   input {
     width: 100%;
     color: var(--neutral);
