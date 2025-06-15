@@ -8,6 +8,7 @@ import {
   Typography,
   InputAdornment,
   Grid,
+  Divider,
   TextField,
 } from "@mui/material";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
@@ -149,7 +150,7 @@ export default function ContactInformationForm({ data, onNext, onPrevious }) {
               />
             </Grid>
           </Grid>
-
+          <Divider sx={{ my: 4 }} />
           <Box mt={4} display="flex" justifyContent="space-between">
             {onPrevious && (
               <Button

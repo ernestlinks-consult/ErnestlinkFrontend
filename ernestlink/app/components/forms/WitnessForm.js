@@ -14,6 +14,7 @@ import {
   FormControl,
   Alert,
   AlertTitle,
+  Divider
 } from "@mui/material";
 import { ArrowLeft, ArrowRight, WarningAmber } from "@mui/icons-material";
 
@@ -179,7 +180,7 @@ function WitnessForm({ data, onNext, onPrevious }) {
               />
             </Grid>
           </Grid>
-
+          <Divider sx={{ my: 4 }} />
           <Box mt={4} display="flex" justifyContent="space-between">
             {onPrevious && (
               <Button

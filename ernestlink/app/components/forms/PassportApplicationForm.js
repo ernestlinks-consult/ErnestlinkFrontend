@@ -8,6 +8,7 @@ import {
   CardContent,
   CardHeader,
   CardActions,
+  Divider,
   Typography,
   TextField,
   Item,
@@ -137,8 +138,8 @@ export default function Pass({ data, onNext }) {
               </LocalizationProvider>
             </Grid>
           </Grid>
-
-          <Box display="flex" justifyContent="flex-end" pt={3}>
+          <Divider sx={{ my: 4 }} />
+          <Box display="flex" justifyContent="flex-end">
             <Button
               type="submit"
               variant="contained"

@@ -59,7 +59,7 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
       />
       <CardContent>
       <form onSubmit={handleSubmit}>
-        <Typography variant="h6" color="primary" gutterBottom>
+        <Typography variant="h6" color="#0505AA" gutterBottom>
           Guarantor 1
         </Typography>
         <Grid container spacing={2} sx={{ width: "100%" }}>
@@ -168,7 +168,7 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
         </Grid>
         <Divider sx={{ my: 2 }} />
         
-        <Typography variant="h6" color="secondary" gutterBottom>
+        <Typography variant="h6" color="#0505AA" gutterBottom>
           Guarantor 2
         </Typography>
         <Grid container spacing={2} sx={{ width: "100%" }}>

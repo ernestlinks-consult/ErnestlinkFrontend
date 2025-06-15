@@ -64,7 +64,7 @@ export const RegistrationFlow = ({ onBack }) => {
       component: PersonalInformationForm,
     },
     {
-      id: 3,
+      id: 10,
       title: "ID & Contact Information",
       component: ContactInformationForm,
     },
@@ -95,7 +95,7 @@ export const RegistrationFlow = ({ onBack }) => {
       title: "Document Uploads", 
       component: DocumentUploadsForm 
     },
-    { id: 10, 
+    { id: 3, 
       title: "Review & Submit", 
       component: ReviewSubmitForm },
   ];
