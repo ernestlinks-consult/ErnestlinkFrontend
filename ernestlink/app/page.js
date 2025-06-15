@@ -9,16 +9,16 @@ export default function Home() {
         display={"flex"}
         alignItems="center"
         className="min-h-screen bg-gray-100"
-        alignContent="center"
-        justifyContent="center">
+        justifyContent="center"
+      >
         <Paper
           elevation={3}
-          alignContent="center"
           sx={{
             padding: 6,
             textAlign: "center",
             borderRadius: 4,
-          }}>
+          }}
+        >
           <Head>
             <title>Welcome | ErnestLinks Consult</title>
           </Head>
@@ -35,7 +35,8 @@ export default function Home() {
                 px: 4,
                 py: 1.5,
                 fontSize: "1.125rem", // text-lg
-              }}>
+              }}
+            >
               Login as Admin
             </Button>
           </Box>
