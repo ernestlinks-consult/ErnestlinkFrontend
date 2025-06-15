@@ -12,7 +12,7 @@ import {
   Container,
 } from "@mui/material";
 import { Search as SearchIcon, Add, Edit, Delete } from "@mui/icons-material";
-import PassportForm from "./AddNewPassport";
+import PassportForm from "./AddNewPassporttt";
 
 const initialApplicants = [
   {
@@ -50,7 +50,7 @@ const statusColors = {
   Rejected: "error",
 };
 
-export default function PassportApplications() {
+export default function PassportApplications({ onRegisterNew }) {
   // const [showFilters, setShowFilters] = useState(false);
   const [applicants, setApplicants] = useState(initialApplicants);
   const [open, setOpen] = useState(false);
@@ -134,6 +134,10 @@ export default function PassportApplications() {
           <Button
             variant="outlined"
             startIcon={<Add />}
+            component="a"
+            // href = "/register-passport"
+            target="_blank"
+            rel="noopener noreferrer"
             sx={{
               color: "#fff",
               borderColor: "#0505AA",
@@ -145,7 +149,10 @@ export default function PassportApplications() {
                 color: "#0505AA",
               },
             }}
-            onClick={() => setOpen(true)}>
+            onClick={onRegisterNew}
+            // onClick={() => setSelectedMenu("register-passport")}
+            // onClick={() => setOpen(true)}
+            >
             Register New Passport
           </Button>
         </Box>
@@ -321,7 +328,7 @@ export default function PassportApplications() {
       </Box>
 
       {/* Modal Form */}
-      <PassportForm
+      {/* <PassportForm
         open={open}
         onClose={() => {
           setOpen(false);
@@ -330,7 +337,7 @@ export default function PassportApplications() {
         onAdd={handleAdd}
         onEdit={handleEdit}
         editData={editApplicant}
-      />
+      /> */}
     </Container>
   );
 }

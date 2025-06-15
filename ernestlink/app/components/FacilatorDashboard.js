@@ -10,7 +10,7 @@ import {
   Chip,
 } from "@mui/material";
 
-export default function FacilatorDashboard() {
+export default function FacilatorDashboard({ onRegisterNew }) {
   return (
     <Container
       maxWidth="xl"
@@ -235,9 +235,13 @@ export default function FacilatorDashboard() {
               </Typography>
               <Button
                 variant="contained"
+                // component="a"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onRegisterNew}
                 sx={{
-                  backgroundColor: "#1e3a8a",
-                  "&:hover": { backgroundColor: "#1e40af" },
+                fontWeight: 400,
+                bgcolor: "#0505AA",
                 }}>
                 Register Passport
               </Button>
