@@ -149,7 +149,7 @@ function DocumentUploadsForm({ data, onNext, onPrevious }) {
               const isUploaded = !!uploadedFile;
 
               return (
-                <Grid item size={{ xs: 12, sm: 6 }} key={document.key}>
+                <Grid item size={{ xs: 12, md: 6 }} key={document.key}>
                   <Card variant="outlined" sx={{ height: "100%" }}>
                     <CardContent
                       sx={{ display: "flex", flexDirection: "column", gap: 2 }}

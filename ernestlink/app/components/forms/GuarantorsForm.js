@@ -57,150 +57,223 @@ export default function GuarantorsForm({ data, onNext, onPrevious }) {
         subheader="Please provide information for two guarantors who are not your parents.
         These should be people who can vouch for your identity and character."
       />
-      <CardContent>
-        <form onSubmit={handleSubmit}>
-          <Typography variant="h6" color="#0505AA" gutterBottom>
-            Guarantor 1
-          </Typography>
-          <Grid container spacing={2} sx={{ width: "100%" }}>
-            <Grid item size={{ xs: 12, md: 4 }}>
-              <TextField
-                label="Full Name"
-                value={formData.guarantor1FullName}
-                onChange={handleChange("guarantor1FullName")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-            <Grid item size={{ xs: 12, md: 4 }}>
-              <TextField
-                label="Occupation"
-                value={formData.guarantor1Occupation}
-                onChange={handleChange("guarantor1Occupation")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-            <Grid item size={{ xs: 12, md: 4 }}>
-              <TextField
-                label="Telephone"
-                value={formData.guarantor1Telephone}
-                onChange={handleChange("guarantor1Telephone")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
+          <CardContent>
+      <form onSubmit={handleSubmit}>
+        <Typography variant="h6" color="primary" gutterBottom>
+          Guarantor 1
+        </Typography>
+        <Grid container spacing={2} sx={{ width: "100%" }}>
+          <Grid item size={{ xs: 12, md: 4 }}>
+            <TextField
+              label="Full Name"
+              value={formData.guarantor1FullName}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, ""); // remove numbers
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1FullName: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item size={{ xs: 12, md: 4 }}>
+            <TextField
+              label="Occupation"
+              value={formData.guarantor1Occupation}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, ""); // remove numbers
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1Occupation: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item size={{ xs: 12, md: 4 }}>
+            <TextField
+              label="Telephone"
+              value={formData.guarantor1Telephone}
+              onChange={(e) => {
+                const onlyDigits = e.target.value
+                  .replace(/\D/g, "")
+                  .slice(0, 10); // allow only numbers, max 10
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1Telephone: onlyDigits,
+                }));
+              }}
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                minLength: 10,
+                maxLength: 10,
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+        <Grid container spacing={2}>
+          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+            <TextField
+              label="Email"
+              type="email"
+              value={formData.guarantor1Email}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1Email: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
           </Grid>
 
-          <Grid container spacing={2}>
-            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-              <TextField
-                label="Email"
-                type="email"
-                value={formData.guarantor1Email}
-                onChange={handleChange("guarantor1Email")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-
-            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-              <TextField
-                label="Residential Address"
-                value={formData.guarantor1ResidentialAddress}
-                onChange={handleChange("guarantor1ResidentialAddress")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-              <TextField
-                label="Postal Address"
-                value={formData.guarantor1PostalAddress}
-                onChange={handleChange("guarantor1PostalAddress")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
+          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+            <TextField
+              label="Residential Address"
+              value={formData.guarantor1ResidentialAddress}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1ResidentialAddress: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+            <TextField
+              label="Postal Address"
+              value={formData.guarantor1PostalAddress}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor1PostalAddress: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
           </Grid>
           <Divider sx={{ my: 2 }} />
 
-          <Typography variant="h6" sx={{color:"#0505AA"}} gutterBottom>
-            Guarantor 2
-          </Typography>
-          <Grid container spacing={2} sx={{ width: "100%" }}>
-            <Grid item size={{ xs: 12, md: 4 }}>
-              <TextField
-                label="Full Name"
-                value={formData.guarantor2FullName}
-                onChange={handleChange("guarantor2FullName")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-            <Grid item size={{ xs: 12, md: 4 }}>
-              <TextField
-                label="Occupation"
-                value={formData.guarantor2Occupation}
-                onChange={handleChange("guarantor2Occupation")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-            <Grid item size={{ xs: 12, md: 4 }}>
-              <TextField
-                label="Telephone"
-                value={formData.guarantor2Telephone}
-                onChange={handleChange("guarantor2Telephone")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
+        <Typography variant="h6" color="secondary" gutterBottom>
+          Guarantor 2
+        </Typography>
+        <Grid container spacing={2} sx={{ width: "100%" }}>
+          <Grid item size={{ xs: 12, md: 4 }}>
+            <TextField
+              label="Full Name"
+              value={formData.guarantor2FullName}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2FullName: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item size={{ xs: 12, md: 4 }}>
+            <TextField
+              label="Occupation"
+              value={formData.guarantor2Occupation}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2Occupation: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item size={{ xs: 12, md: 4 }}>
+            <TextField
+              label="Telephone"
+              value={formData.guarantor2Telephone}
+              onChange={(e) => {
+                const onlyDigits = e.target.value
+                  .replace(/\D/g, "")
+                  .slice(0, 10); // allow only numbers, max 10
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2Telephone: onlyDigits,
+                }));
+              }}
+              inputProps={{
+                inputMode: "numeric",
+                pattern: "[0-9]*",
+                minLength: 10,
+                maxLength: 10,
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+            <TextField
+              label="Email"
+              type="email"
+              value={formData.guarantor2Email}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2Email: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
           </Grid>
 
-          <Grid container spacing={2}>
-            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-              <TextField
-                label="Email"
-                type="email"
-                value={formData.guarantor2Email}
-                onChange={handleChange("guarantor2Email")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-
-            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-              <TextField
-                label="Residential Address"
-                value={formData.guarantor2ResidentialAddress}
-                onChange={handleChange("guarantor2ResidentialAddress")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
-            <Grid item size={{ xs: 12, md: 4 }} mt={2}>
-              <TextField
-                label="Postal Address"
-                value={formData.guarantor2PostalAddress}
-                onChange={handleChange("guarantor2PostalAddress")}
-                fullWidth
-                sx={ inputFieldStyle }
-                required
-              />
-            </Grid>
+          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+            <TextField
+              label="Residential Address"
+              value={formData.guarantor2ResidentialAddress}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2ResidentialAddress: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
           </Grid>
+          <Grid item size={{ xs: 12, md: 4 }} mt={2}>
+            <TextField
+              label="Postal Address"
+              value={formData.guarantor2PostalAddress}
+              onChange={(e) => {
+                const textOnly = e.target.value.replace(/[0-9]/g, "");
+                setFormData((prev) => ({
+                  ...prev,
+                  guarantor2PostalAddress: textOnly,
+                }));
+              }}
+              fullWidth
+              required
+            />
+          </Grid>
+        </Grid>
 
           <Divider sx={{ my: 4 }} />
 

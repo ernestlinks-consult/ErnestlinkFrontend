@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -14,32 +14,32 @@ import {
   FormControlLabel,
   CardHeader,
   CardContent,
-  FormLabel
-} from '@mui/material';
-import { ArrowLeft, ArrowRight } from '@mui/icons-material';
-import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+  FormLabel,
+} from "@mui/material";
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 export default function PersonalInformationForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
-    title: data.title || '',
-    surname: data.surname || '',
-    firstName: data.firstName || '',
-    otherNames: data.otherNames || '',
-    maidenName: data.maidenName || '',
-    previousNames: data.previousNames || '',
-    gender: data.gender || '',
+    title: data.title || "",
+    surname: data.surname || "",
+    firstName: data.firstName || "",
+    otherNames: data.otherNames || "",
+    maidenName: data.maidenName || "",
+    previousNames: data.previousNames || "",
+    gender: data.gender || "",
     dateOfBirth: data.dateOfBirth || null,
-    cityOfBirth: data.cityOfBirth || '',
-    countryOfBirth: data.countryOfBirth || '',
-    height: data.height || '',
-    eyeColour: data.eyeColour || '',
-    hairColour: data.hairColour || '',
-    visiblePeculiarities: data.visiblePeculiarities || '',
-    nationality: data.nationality || 'Ghanaian',
-    dualCitizenship: data.dualCitizenship || '',
-    maritalStatus: data.maritalStatus || '',
-    profession: data.profession || '',
+    cityOfBirth: data.cityOfBirth || "",
+    countryOfBirth: data.countryOfBirth || "",
+    height: data.height || "",
+    eyeColour: data.eyeColour || "",
+    hairColour: data.hairColour || "",
+    visiblePeculiarities: data.visiblePeculiarities || "",
+    nationality: data.nationality || "Ghanaian",
+    dualCitizenship: data.dualCitizenship || "",
+    maritalStatus: data.maritalStatus || "",
+    profession: data.profession || "",
   });
 
   const handleSubmit = (e) => {
@@ -47,59 +47,83 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
     onNext(formData);
   };
 
-  const titles = ['Mr', 'Mrs', 'Miss', 'Ms', 'Dr', 'Prof', 'Rev', 'Chief'];
-  const maritalStatuses = ['Single', 'Married', 'Divorced', 'Widowed', 'Separated'];
+  const titles = ["Mr", "Mrs", "Miss", "Ms", "Dr", "Prof", "Rev", "Chief"];
+  const maritalStatuses = [
+    "Single",
+    "Married",
+    "Divorced",
+    "Widowed",
+    "Separated",
+  ];
 
   return (
     <Box
-        component="form"   
-        sx={{
+      component="form"
+      sx={{
         flex: 1,
         minHeight: { xs: "30px", sm: "10vh" },
         p: 3,
         border: "2px solid #007BFF30",
         borderRadius: 2,
         bgcolor: "#F8F8FF",
-        }} 
-        onSubmit={handleSubmit}>
-      
+      }}
+      onSubmit={handleSubmit}
+    >
       <CardHeader
-        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>
+        title={
+          <Typography
+            variant="h5"
+            className="mb-1 font-semibold"
+            sx={{ fontWeight: 600, color: "#0505AA" }}
+          >
             Personal Information
-        </Typography>}
+          </Typography>
+        }
         subheader="Please provide your personal details as they appear on your official documents."
-        />
-        <Grid container spacing={2} sx={{ mb: 3 }}>
-            <Grid size={6}>
-                <FormControl fullWidth>
-                    <InputLabel>Title</InputLabel>
-                    <Select
-                    value={formData.title}
-                    onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                    label="Title"
-                    >
-                    {titles.map((title) => (
-                        <MenuItem key={title} value={title}>{title}</MenuItem>
-                    ))}
-                    </Select>
-                </FormControl>
-            </Grid>
+      />
+      <Grid container spacing={2} sx={{ mb: 3 }}>
+        <Grid size={6}>
+          <FormControl fullWidth>
+            <InputLabel>Title</InputLabel>
+            <Select
+              value={formData.title}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, title: e.target.value }))
+              }
+              label="Title"
+            >
+              {titles.map((title) => (
+                <MenuItem key={title} value={title}>
+                  {title}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
 
-            <Grid size={6}>
-            <TextField
-                label="Surname"
-                value={formData.surname}
-                onChange={(e) => setFormData(prev => ({ ...prev, surname: e.target.value }))}
-                fullWidth
-                required
-            />
-            </Grid>
+        <Grid size={6}>
+          <TextField
+            label="Surname"
+            value={formData.surname || ""}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, surname: textOnly }));
+            }}
+            fullWidth
+            required
+          />
+        </Grid>
 
         <Grid size={6}>
           <TextField
             label="First Name"
             value={formData.firstName}
-            onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, firstName: textOnly }));
+            }}
             fullWidth
             required
           />
@@ -109,7 +133,11 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Other Name(s)"
             value={formData.otherNames}
-            onChange={(e) => setFormData(prev => ({ ...prev, otherNames: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, otherNames: textOnly }));
+            }}
             fullWidth
           />
         </Grid>
@@ -118,7 +146,11 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Maiden Name"
             value={formData.maidenName}
-            onChange={(e) => setFormData(prev => ({ ...prev, maidenName: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, maidenName: textOnly }));
+            }}
             fullWidth
           />
         </Grid>
@@ -127,7 +159,11 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Previous Names"
             value={formData.previousNames}
-            onChange={(e) => setFormData(prev => ({ ...prev, previousNames: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, previousNames: textOnly }));
+            }}
             fullWidth
           />
         </Grid>
@@ -138,10 +174,16 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
             <RadioGroup
               row
               value={formData.gender}
-              onChange={(e) => setFormData(prev => ({ ...prev, gender: e.target.value }))}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, gender: e.target.value }))
+              }
             >
               <FormControlLabel value="male" control={<Radio />} label="Male" />
-              <FormControlLabel value="female" control={<Radio />} label="Female" />
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Female"
+              />
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -151,14 +193,16 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
             <DatePicker
               label="Date of Birth"
               value={formData.dateOfBirth}
-              onChange={(date) => setFormData(prev => ({ ...prev, dateOfBirth: date }))}
+              onChange={(date) =>
+                setFormData((prev) => ({ ...prev, dateOfBirth: date }))
+              }
               renderInput={(params) => <TextField fullWidth {...params} />}
-                slotProps={{
-                    textField: {
-                        fullWidth: true,
-                        required: true,
-                    },
-                    }}
+              slotProps={{
+                textField: {
+                  fullWidth: true,
+                  required: true,
+                },
+              }}
             />
           </LocalizationProvider>
         </Grid>
@@ -167,7 +211,11 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="City/Town of Birth"
             value={formData.cityOfBirth}
-            onChange={(e) => setFormData(prev => ({ ...prev, cityOfBirth: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, cityOfBirth: textOnly }));
+            }}
             fullWidth
             required
           />
@@ -177,7 +225,11 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Country of Birth"
             value={formData.countryOfBirth}
-            onChange={(e) => setFormData(prev => ({ ...prev, countryOfBirth: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, countryOfBirth: textOnly }));
+            }}
             fullWidth
             required
           />
@@ -188,7 +240,9 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
             label="Height (cm)"
             type="number"
             value={formData.height}
-            onChange={(e) => setFormData(prev => ({ ...prev, height: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, height: e.target.value }))
+            }
             fullWidth
             required
           />
@@ -198,7 +252,11 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Eye Colour"
             value={formData.eyeColour}
-            onChange={(e) => setFormData(prev => ({ ...prev, eyeColour: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, eyeColour: textOnly }));
+            }}
             fullWidth
             required
           />
@@ -208,7 +266,11 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Hair Colour"
             value={formData.hairColour}
-            onChange={(e) => setFormData(prev => ({ ...prev, hairColour: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({ ...prev, hairColour: textOnly }));
+            }}
             fullWidth
             required
           />
@@ -217,8 +279,16 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
         <Grid size={12}>
           <TextField
             label="Visible Peculiarities"
+            type="text"
             value={formData.visiblePeculiarities}
-            onChange={(e) => setFormData(prev => ({ ...prev, visiblePeculiarities: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({
+                ...prev,
+                visiblePeculiarities: textOnly,
+              }));
+            }}
             fullWidth
             multiline
           />
@@ -228,7 +298,6 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Nationality"
             value={formData.nationality}
-            // disabled
             fullWidth
           />
         </Grid>
@@ -236,8 +305,16 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
         <Grid size={6}>
           <TextField
             label="Dual Citizenship"
+            type="text"
             value={formData.dualCitizenship}
-            onChange={(e) => setFormData(prev => ({ ...prev, dualCitizenship: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({
+                ...prev,
+                dualCitizenship: textOnly,
+              }));
+            }}
             fullWidth
           />
         </Grid>
@@ -247,11 +324,18 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
             <InputLabel>Marital Status</InputLabel>
             <Select
               value={formData.maritalStatus}
-              onChange={(e) => setFormData(prev => ({ ...prev, maritalStatus: e.target.value }))}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  maritalStatus: e.target.value,
+                }))
+              }
               label="Marital Status"
             >
-              {maritalStatuses.map(status => (
-                <MenuItem key={status} value={status}>{status}</MenuItem>
+              {maritalStatuses.map((status) => (
+                <MenuItem key={status} value={status}>
+                  {status}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -261,7 +345,14 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
           <TextField
             label="Profession"
             value={formData.profession}
-            onChange={(e) => setFormData(prev => ({ ...prev, profession: e.target.value }))}
+            onChange={(e) => {
+              const value = e.target.value || "";
+              const textOnly = e.target.value.replace(/[0-9]/g, "");
+              setFormData((prev) => ({
+                ...prev,
+                profession: textOnly,
+              }));
+            }}
             fullWidth
             required
           />
@@ -270,47 +361,55 @@ export default function PersonalInformationForm({ data, onNext, onPrevious }) {
 
       <Box mt={4} display="flex" justifyContent="space-between">
         {onPrevious && (
-          <Button variant="outlined"
-              sx={{color: "#0505AA",
-                borderColor: "#0505AA",
-                textTransform: "none",
-                fontWeight: 400,
-                "&:hover": {
-                  bgcolor: "#0505AA",
-                  color: "#fff",
-                },
-              }}
-          onClick={onPrevious} startIcon={<ArrowLeft />}>Previous</Button>
-        )}
-        <Button 
-            type="submit" 
-            variant="contained"
+          <Button
+            variant="outlined"
             sx={{
-                color: "#fff",
-                borderColor: "#0505AA",
+              color: "#0505AA",
+              borderColor: "#0505AA",
+              textTransform: "none",
+              fontWeight: 400,
+              "&:hover": {
                 bgcolor: "#0505AA",
-                textTransform: "none",
-                fontWeight: 400,
-              }}
-            endIcon={<ArrowRight />}
-        disabled={
-                !formData.title ||
-                !formData.surname ||
-                !formData.firstName ||
-                !formData.gender ||
-                !formData.dateOfBirth ||
-                !formData.cityOfBirth ||
-                !formData.countryOfBirth ||
-                !formData.height ||
-                !formData.eyeColour ||
-                !formData.hairColour ||
-                !formData.countryOfBirth ||
-                !formData.nationality ||
-                !formData.countryOfBirth ||
-                !formData.profession ||
-                !formData.maritalStatus
-              }
-        >Next</Button>
+                color: "#fff",
+              },
+            }}
+            onClick={onPrevious}
+            startIcon={<ArrowLeft />}
+          >
+            Previous
+          </Button>
+        )}
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{
+            color: "#fff",
+            borderColor: "#0505AA",
+            bgcolor: "#0505AA",
+            textTransform: "none",
+            fontWeight: 400,
+          }}
+          endIcon={<ArrowRight />}
+          disabled={
+            !formData.title ||
+            !formData.surname ||
+            !formData.firstName ||
+            !formData.gender ||
+            !formData.dateOfBirth ||
+            !formData.cityOfBirth ||
+            !formData.countryOfBirth ||
+            !formData.height ||
+            !formData.eyeColour ||
+            !formData.hairColour ||
+            !formData.countryOfBirth ||
+            !formData.nationality ||
+            !formData.countryOfBirth ||
+            !formData.profession ||
+            !formData.maritalStatus
+          }
+        >
+          Next
+        </Button>
       </Box>
     </Box>
     // </Box>

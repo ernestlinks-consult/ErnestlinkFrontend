@@ -69,8 +69,13 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             required
             label="Full Name"
             value={formData[`${prefix}FullName`]}
-            onChange={handleChange(`${prefix}FullName`)}
-            sx={ inputFieldStyle }
+            onChange={(e) => {
+              const onlyLetters = e.target.value.replace(/[^a-zA-Z\s]/g, ""); // allow letters and spaces only
+              setFormData((prev) => ({
+                ...prev,
+                [`${prefix}FullName`]: onlyLetters,
+              }));
+            }}
           />
         </Grid>
         <Grid item size={{ xs: 12, sm: 6 }}>
@@ -111,8 +116,20 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             fullWidth
             label="Telephone"
             value={formData[`${prefix}Telephone`]}
-            onChange={handleChange(`${prefix}Telephone`)}
-            sx={ inputFieldStyle }
+            onChange={(e) => {
+              const onlyDigits = e.target.value.replace(/\D/g, "").slice(0, 10); // ensure only digits, max 10
+              setFormData((prev) => ({
+                ...prev,
+                [`${prefix}Telephone`]: onlyDigits,
+              }));
+            }}
+            inputProps={{
+              inputMode: "numeric",
+              pattern: "[0-9]*",
+              minLength: 10,
+              maxLength: 10,
+            }}
+            required
           />
         </Grid>
         <Grid item size={{ xs: 12, sm: 6 }}>
@@ -131,8 +148,13 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             required
             label="Hometown"
             value={formData[`${prefix}Hometown`]}
-            onChange={handleChange(`${prefix}Hometown`)}
-            sx={ inputFieldStyle }
+            onChange={(e) => {
+              const onlyLetters = e.target.value.replace(/[^a-zA-Z\s]/g, "");
+              setFormData((prev) => ({
+                ...prev,
+                [`${prefix}Hometown`]: onlyLetters,
+              }));
+            }}
           />
         </Grid>
         <Grid item size={{ xs: 12, sm: 6 }}>
@@ -141,8 +163,13 @@ function ParentalInformationForm({ data, onNext, onPrevious }) {
             required
             label="Nationality"
             value={formData[`${prefix}Nationality`]}
-            onChange={handleChange(`${prefix}Nationality`)}
-            sx={ inputFieldStyle }
+            onChange={(e) => {
+              const onlyLetters = e.target.value.replace(/[^a-zA-Z\s]/g, "");
+              setFormData((prev) => ({
+                ...prev,
+                [`${prefix}Nationality`]: onlyLetters,
+              }));
+            }}
           />
         </Grid>
         <Grid item size={{ xs: 12, sm: 6 }}>
