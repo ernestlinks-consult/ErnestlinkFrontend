@@ -1,13 +1,16 @@
 import { useState } from "react";
 import {
-  Box,
-  Grid,
-  Typography,
-  TextField,
   Button,
-  Divider,
-} from "@mui/material";
-import { ArrowLeft, ArrowRight } from "@mui/icons-material";
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Grid,
+  TextField
+} from '@mui/material';
+import { ArrowLeft, ArrowRight } from '@mui/icons-material';
+
 
 export default function ContactInformationForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
@@ -33,137 +36,116 @@ export default function ContactInformationForm({ data, onNext, onPrevious }) {
 
   return (
     <Box
-      sx={{
+        // component="form"   
+        sx={{
         flex: 1,
         minHeight: { xs: "30px", sm: "10vh" },
         p: 3,
         border: "2px solid #007BFF30",
         borderRadius: 2,
         bgcolor: "#F8F8FF",
-      }}
-    >
-      <Typography variant="h6" fontWeight={600} gutterBottom>
-        Residential Information_3
-      </Typography>
-      <Typography variant="body2" color="text.secondary" mb={3}>
-        Please provide your current residential address details.
-      </Typography>
-
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="houseNumber"
-              label="House Number"
-              value={formData.houseNumber}
-              onChange={handleChange}
+        }} 
+        >
+      <CardHeader
+        title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>
+        ID & Contact Information</Typography>}
+        subheader="Please provide your identification and contact details"
+      />
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <Grid container spacing={2} sx={{ mb: 3 }}>
+            <Grid size={6}>
+              <TextField
               fullWidth
+              type='number'
+              label="National ID Number (Ghana Card)"
+              value={formData.nationalIdNumber}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, nationalIdNumber: e.target.value }))
+              }
               required
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="streetName"
-              label="Street Name"
-              value={formData.streetName}
-              onChange={handleChange}
+              />
+            </Grid>
+          
+            <Grid size={6}>
+              <TextField
               fullWidth
-              required
-            />
+              label="SSNIT Number (Optional)"
+              value={formData.ssnitNumber}
+              onChange={(e) =>
+              setFormData((prev) => ({ ...prev, ssnitNumber: e.target.value }))
+              }
+              />
+            </Grid>
+          
+            <Grid size={6}>
+              <TextField
+                fullWidth
+                label="Telephone Number"
+                type="tel"
+                value={formData.telephoneNumber}
+                onChange={(e) => {
+                  const onlyNums = e.target.value.replace(/\D/g, ''); 
+                  setFormData((prev) => ({ ...prev, telephoneNumber: onlyNums }));
+                }}
+                inputProps={{
+                  inputMode: 'numeric',
+                  pattern: '[0-9]*', // allows only numeric input
+                }}
+                required
+              />
+            </Grid>
+          
+            <Grid size={6}>
+              <TextField
+                fullWidth
+                label="Email Address"
+                type="email"
+                value={formData.emailAddress}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, emailAddress: e.target.value }))
+                }
+                required
+              />
+            </Grid> 
           </Grid>
 
-          <Grid item xs={12}>
-            <TextField
-              id="digitalAddress"
-              label="Digital Address (GhanaPost GPS)"
-              value={formData.digitalAddress}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
-
-          <Grid item xs={12}>
-            <TextField
-              id="postalAddress"
-              label="Postal Address"
-              value={formData.postalAddress}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="suburb"
-              label="Suburb"
-              value={formData.suburb}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="cityOfResidence"
-              label="City of Residence"
-              value={formData.cityOfResidence}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="countryOfResidence"
-              label="Country of Residence"
-              value={formData.countryOfResidence}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="postalZipCode"
-              label="Postal/Zip Code"
-              value={formData.postalZipCode}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
-        </Grid>
-
-        <Divider sx={{ my: 4 }} />
-
-        <Box display="flex" justifyContent="space-between">
-          {onPrevious && (
-            <Button
-              variant="outlined"
-              onClick={onPrevious}
-              startIcon={<ArrowLeft />}
-            >
-              Previous
+          <Box mt={4} display="flex" justifyContent="space-between">
+            {onPrevious && (
+                      <Button variant="outlined"
+                          sx={{color: "#0505AA",
+                            borderColor: "#0505AA",
+                            textTransform: "none",
+                            fontWeight: 400,
+                            "&:hover": {
+                              bgcolor: "#0505AA",
+                              color: "#fff",
+                            },
+                          }}
+                      onClick={onPrevious} startIcon={<ArrowLeft />}>Previous</Button>
+                    )}
+             <Button 
+              type="submit" 
+              variant="contained"
+              sx={{
+                  color: "#fff",
+                  borderColor: "#0505AA",
+                  bgcolor: "#0505AA",
+                  textTransform: "none",
+                  fontWeight: 400,
+                }}
+              endIcon={<ArrowRight />}
+                disabled={
+                  !formData.nationalIdNumber ||
+                  !formData.telephoneNumber ||
+                  !formData.emailAddress
+                }
+              >
+              Next
             </Button>
-          )}
-          <Button
-            type="submit"
-            variant="contained"
-            endIcon={<ArrowRight />}
-            disabled={
-              !formData.houseNumber ||
-              !formData.streetName ||
-              !formData.digitalAddress ||
-              !formData.postalAddress ||
-              !formData.cityOfResidence ||
-              !formData.countryOfResidence
-            }
-          >
-            Next
-          </Button>
-        </Box>
-      </form>
+          </Box>
+        </form>
+      </CardContent>
     </Box>
   );
 }

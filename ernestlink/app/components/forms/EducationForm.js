@@ -1,30 +1,26 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import {
-  Box,
-  Grid,
+  Card,
+  CardContent,
+  CardHeader,
   Typography,
   TextField,
+  Grid,
+  Box,
   Button,
-  Divider,
-} from "@mui/material";
-import { ArrowLeft, ArrowRight } from "@mui/icons-material";
+} from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { ArrowLeft, ArrowRight } from '@mui/icons-material';
 
 export default function EducationForm({ data, onNext, onPrevious }) {
   const [formData, setFormData] = useState({
-    houseNumber: data.houseNumber || "",
-    streetName: data.streetName || "",
-    digitalAddress: data.digitalAddress || "",
-    postalAddress: data.postalAddress || "",
-    suburb: data.suburb || "",
-    cityOfResidence: data.cityOfResidence || "",
-    countryOfResidence: data.countryOfResidence || "",
-    postalZipCode: data.postalZipCode || "",
+    institutionName: data.institutionName || '',
+    periodFrom: data.periodFrom || null,
+    periodTo: data.periodTo || null,
+    schoolPostalAddress: data.schoolPostalAddress || '',
   });
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,137 +29,125 @@ export default function EducationForm({ data, onNext, onPrevious }) {
 
   return (
     <Box
-      sx={{
-        flex: 1,
-        minHeight: { xs: "30px", sm: "10vh" },
-        p: 3,
-        border: "2px solid #007BFF30",
-        borderRadius: 2,
-        bgcolor: "#F8F8FF",
-      }}
-    >
-      <Typography variant="h6" fontWeight={600} gutterBottom>
-        Residential Information_step_5
-      </Typography>
-      <Typography variant="body2" color="text.secondary" mb={3}>
-        Please provide your current residential address details.
-      </Typography>
+              sx={{
+                flex: 1,
+                minHeight: { xs: "30px", sm: "10vh" },
+                p: 3,
+                border: "2px solid #007BFF30",
+                borderRadius: 2,
+                bgcolor: "#F8F8FF",
+              }}>
+      <CardHeader
+         title={<Typography variant="h5" className="mb-1 font-semibold" sx={{ fontWeight: 600, color: "#0505AA" }}>Education</Typography>}
+        subheader="Please provide details about your most recent educational institution"
+      />
+      <CardContent>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <Box component="form" onSubmit={handleSubmit} noValidate autoComplete="off">
+            <Grid container spacing={2} sx={{ mb: 3 }}>
+              <Grid size={12}>
+                <TextField
+                  fullWidth
+                  required
+                  label="Institution Name"
+                  value={formData.institutionName}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, institutionName: e.target.value }))
+                  }
+                />
+              </Grid>
 
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="houseNumber"
-              label="House Number"
-              value={formData.houseNumber}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="streetName"
-              label="Street Name"
-              value={formData.streetName}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
+              <Grid size={6}>
+                <DatePicker
+                  label="Period From"
+                  value={formData.periodFrom}
+                  onChange={(date) =>
+                    setFormData((prev) => ({ ...prev, periodFrom: date }))
+                  }
+                  slotProps={{
+                    textField: {
+                      fullWidth: true,
+                      required: true,
+                    },
+                  }}
+                  maxDate={new Date()}
+                //   renderInput={(params) => <TextField fullWidth required {...params} />}
+                />
+              </Grid>
 
-          <Grid item xs={12}>
-            <TextField
-              id="digitalAddress"
-              label="Digital Address (GhanaPost GPS)"
-              value={formData.digitalAddress}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
+              <Grid size={6}>
+                <DatePicker
+                  label="Period To"
+                  value={formData.periodTo}
+                  onChange={(date) =>
+                    setFormData((prev) => ({ ...prev, periodTo: date }))
+                  }
+                //   minDate={formData.periodFrom}
+                //   maxDate={new Date()}
+                slotProps={{
+                    textField: {
+                      fullWidth: true,
+                      required: true,
+                    },
+                  }}
+                //   renderInput={(params) => <TextField fullWidth required {...params} />}
+                />
+              </Grid>
 
-          <Grid item xs={12}>
-            <TextField
-              id="postalAddress"
-              label="Postal Address"
-              value={formData.postalAddress}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
+              <Grid size={12}>
+                <TextField
+                  fullWidth
+                  required
+                  label="School's Postal Address"
+                  value={formData.schoolPostalAddress}
+                  onChange={(e) =>
+                    setFormData((prev) => ({ ...prev, schoolPostalAddress: e.target.value }))
+                  }
+                />
+              </Grid>
+            </Grid>
 
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="suburb"
-              label="Suburb"
-              value={formData.suburb}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="cityOfResidence"
-              label="City of Residence"
-              value={formData.cityOfResidence}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="countryOfResidence"
-              label="Country of Residence"
-              value={formData.countryOfResidence}
-              onChange={handleChange}
-              fullWidth
-              required
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="postalZipCode"
-              label="Postal/Zip Code"
-              value={formData.postalZipCode}
-              onChange={handleChange}
-              fullWidth
-            />
-          </Grid>
-        </Grid>
-
-        <Divider sx={{ my: 4 }} />
-
-        <Box display="flex" justifyContent="space-between">
-          {onPrevious && (
-            <Button
-              variant="outlined"
-              onClick={onPrevious}
-              startIcon={<ArrowLeft />}
-            >
-              Previous
-            </Button>
-          )}
-          <Button
-            type="submit"
-            variant="contained"
-            endIcon={<ArrowRight />}
-            disabled={
-              !formData.houseNumber ||
-              !formData.streetName ||
-              !formData.digitalAddress ||
-              !formData.postalAddress ||
-              !formData.cityOfResidence ||
-              !formData.countryOfResidence
-            }
-          >
-            Next
-          </Button>
-        </Box>
-      </form>
+            <Box mt={4} display="flex" justifyContent="space-between">
+              {onPrevious && (
+                <Button
+                  variant="outlined"
+                  sx={{color: "#0505AA",
+                    borderColor: "#0505AA",
+                    textTransform: "none",
+                    fontWeight: 400,
+                    "&:hover": {
+                    bgcolor: "#0505AA",
+                    color: "#fff",
+                    },
+                }}
+                  startIcon={<ArrowLeft />}
+                  onClick={onPrevious}
+                >
+                  Previous
+                </Button>
+              )}
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{color: "#fff",
+                textTransform: "none",
+                fontWeight: 400,
+                bgcolor: "#0505AA",
+              }}
+                endIcon={<ArrowRight />}
+                disabled={
+                  !formData.institutionName ||
+                  !formData.periodFrom ||
+                  !formData.periodTo ||
+                  !formData.schoolPostalAddress
+                }
+              >
+                Next
+              </Button>
+            </Box>
+          </Box>
+        </LocalizationProvider>
+      </CardContent>
     </Box>
   );
-}
+};
